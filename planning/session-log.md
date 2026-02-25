@@ -92,3 +92,12 @@ Also mentioned: Dez Marzette, Jeff Goodby (as real industry figures / resources)
 - [ ] The W+K layoff story
 - [ ] The vaccination incident at GSP
 - [ ] Specific memories and anecdotes to seed episodes
+
+---
+
+## Session 2 - 2026-02-25 - Character Deep Dive & Interview
+
+### What Happened
+- Returned to build out characters and stories via structured interview
+- Built site infrastructure (index.html, series-bible.html) for viewing the bible
+- Beginning character profiling from the 25+ named list
