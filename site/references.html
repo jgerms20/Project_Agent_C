@@ -8,61 +8,52 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
-        <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
-        <div class="sidebar">
+        <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+        <aside class="sidebar">
             <div class="sidebar-header">
                 <h1>THE AGENCY</h1>
                 <div class="subtitle">Series Bible Development</div>
             </div>
             <nav class="sidebar-nav">
-                <div class="nav-section">Dashboard</div>
-                <a href="index.html" class="nav-link"><span class="icon">◆</span> Home</a>
+                <div class="nav-section">Main</div>
+                <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
                 <div class="nav-section">Series Bible</div>
-                <a href="series-bible.html#overview" class="nav-link"><span class="icon">◇</span> Overview</a>
-                <a href="series-bible.html#world" class="nav-link"><span class="icon">◇</span> World</a>
-                <a href="series-bible.html#characters" class="nav-link"><span class="icon">◇</span> Characters</a>
-                <a href="series-bible.html#themes" class="nav-link"><span class="icon">◇</span> Themes</a>
-                <a href="series-bible.html#seasons" class="nav-link"><span class="icon">◇</span> Season Arcs</a>
-                <a href="series-bible.html#tone" class="nav-link"><span class="icon">◇</span> Tone &amp; Style</a>
-                <a href="series-bible.html#pilot" class="nav-link"><span class="icon">◇</span> Pilot Outline</a>
-                <div class="nav-section">Research</div>
-                <a href="research.html#gsp" class="nav-link"><span class="icon">◇</span> Goodby Silverstein</a>
-                <a href="research.html#wk" class="nav-link"><span class="icon">◇</span> Wieden+Kennedy</a>
-                <a href="research.html#tbwa" class="nav-link"><span class="icon">◇</span> TBWA\Chiat\Day</a>
-                <div class="nav-section">References</div>
-                <a href="references.html#comps" class="nav-link active"><span class="icon">◇</span> Comp Shows</a>
-                <a href="references.html#playlist" class="nav-link active"><span class="icon">◇</span> Playlist</a>
-                <div class="nav-section">Planning</div>
-                <a href="planning.html#sessions" class="nav-link"><span class="icon">◇</span> Session Log</a>
-                <a href="planning.html#questions" class="nav-link"><span class="icon">◇</span> Open Questions</a>
-                <a href="planning.html#nextsteps" class="nav-link"><span class="icon">◇</span> Next Steps</a>
+                <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+                <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+                <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+                <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+                <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+                <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+                <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+                <div class="nav-section">Resources</div>
+                <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+                <a href="references.html" class="nav-link active"><span class="icon">&#9898;</span> References</a>
+                <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
             </nav>
-        </div>
+        </aside>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="page-header">
+        <main class="content">
+            <header class="page-header">
                 <h1>References</h1>
-                <p class="page-description">Comparable shows, sonic mood board, and creative influences</p>
-            </div>
+                <p class="page-description">Comparable shows, playlist, and cultural references that shape the show's DNA</p>
+            </header>
 
             <!-- COMPS SECTION -->
-            <div class="section" id="comps">
-                <h2 class="section-title">Comparable Shows Analysis</h2>
+            <section class="references-section">
+                <h2 id="comp-shows">Comparable Shows Analysis</h2>
+                <p class="section-intro">The shows that informed The Agency's storytelling approach, structure, and thematic depth.</p>
 
                 <!-- Primary Comps -->
-                <div class="subsection">
-                    <h3 class="subsection-title">Primary Comps</h3>
-
+                <div class="comps-grid">
                     <!-- Mad Men -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Mad Men</h4>
-                            <p class="card-meta">AMC (2007-2015) • Matthew Weiner • Hour-long drama, 7 seasons</p>
-                            <p class="card-meta">Setting: 1960s New York advertising (Sterling Cooper)</p>
+                    <div class="comp-card">
+                        <div class="comp-header">
+                            <h3>Mad Men</h3>
+                            <span class="comp-meta">AMC | 2007-2015 | 7 seasons</span>
                         </div>
-                        <div class="card-content">
+                        <div class="comp-content">
+                            <p class="comp-creator"><strong>Creator:</strong> Matthew Weiner</p>
+                            <p class="comp-setting"><strong>Setting:</strong> 1960s New York advertising (Sterling Cooper)</p>
                             <div class="comparison-group">
                                 <h5>What We Share</h5>
                                 <ul>

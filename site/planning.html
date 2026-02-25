@@ -3,75 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planning | The Agency / Agency Series Bible</title>
+    <title>Planning &amp; Progress | The Agency — Series Bible</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
-        <div class="sidebar">
+    <div class="layout">
+        <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+        <aside class="sidebar">
             <div class="sidebar-header">
                 <h1>THE AGENCY</h1>
                 <div class="subtitle">Series Bible Development</div>
             </div>
             <nav class="sidebar-nav">
-                <div class="nav-section">Dashboard</div>
-                <a href="index.html" class="nav-link"><span class="icon">◆</span> Home</a>
+                <div class="nav-section">Main</div>
+                <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
                 <div class="nav-section">Series Bible</div>
-                <a href="series-bible.html#overview" class="nav-link"><span class="icon">◇</span> Overview</a>
-                <a href="series-bible.html#world" class="nav-link"><span class="icon">◇</span> World</a>
-                <a href="series-bible.html#characters" class="nav-link"><span class="icon">◇</span> Characters</a>
-                <a href="series-bible.html#themes" class="nav-link"><span class="icon">◇</span> Themes</a>
-                <a href="series-bible.html#seasons" class="nav-link"><span class="icon">◇</span> Season Arcs</a>
-                <a href="series-bible.html#tone" class="nav-link"><span class="icon">◇</span> Tone &amp; Style</a>
-                <a href="series-bible.html#pilot" class="nav-link"><span class="icon">◇</span> Pilot Outline</a>
-                <div class="nav-section">Research</div>
-                <a href="research.html#gsp" class="nav-link"><span class="icon">◇</span> Goodby Silverstein</a>
-                <a href="research.html#wk" class="nav-link"><span class="icon">◇</span> Wieden+Kennedy</a>
-                <a href="research.html#tbwa" class="nav-link"><span class="icon">◇</span> TBWA\Chiat\Day</a>
-                <div class="nav-section">References</div>
-                <a href="references.html#comps" class="nav-link"><span class="icon">◇</span> Comp Shows</a>
-                <a href="references.html#playlist" class="nav-link"><span class="icon">◇</span> Playlist</a>
-                <div class="nav-section">Planning</div>
-                <a href="planning.html#sessions" class="nav-link active"><span class="icon">◇</span> Session Log</a>
-                <a href="planning.html#questions" class="nav-link active"><span class="icon">◇</span> Open Questions</a>
-                <a href="planning.html#nextsteps" class="nav-link active"><span class="icon">◇</span> Next Steps</a>
+                <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+                <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+                <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+                <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+                <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+                <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+                <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+                <div class="nav-section">Resources</div>
+                <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+                <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+                <a href="planning.html" class="nav-link active"><span class="icon">&#9898;</span> Planning</a>
             </nav>
-        </div>
+        </aside>
 
-        <main class="content">
-            <div class="page-header">
-                <h1>Planning</h1>
-                <p class="page-description">Session logs, open questions, and project roadmap</p>
+        <main class="main-content">
+            <div class="header">
+                <h1>Planning &amp; Progress</h1>
+                <p class="description">Session logs, open questions, and next steps for series bible development</p>
             </div>
 
-            <!-- SESSION LOG SECTION -->
-            <section class="section" id="sessions">
-                <h2 class="section-title">Session Log</h2>
+            <div class="content">
 
-                <article class="card">
-                    <h3 class="subsection">Session 1 - 2026-02-22 - Project Kickoff &amp; Interview</h3>
+                <!-- SESSION LOG SECTION -->
+                <section class="section">
+                    <h2>Session Log</h2>
+                    <p class="section-intro">A running record of all development sessions and decisions made.</p>
 
-                    <div class="subsection">
-                        <h4>What Happened</h4>
+                    <!-- Session 1 -->
+                    <article class="subsection">
+                        <h3>Session 1 — 2026-02-22 — Project Kickoff &amp; Interview</h3>
+
+                        <div class="subsection-block">
+                            <h4>What Happened</h4>
                         <ul>
                             <li>Creator shared the initial vision for "The Agency / Agency" via voice and 4 pages of handwritten notes</li>
                             <li>Conducted 3 rounds of structured interviews to establish core decisions</li>
                             <li>Built initial project infrastructure: directory structure, CLAUDE.md, series bible framework, skills, planning docs</li>
                         </ul>
-                    </div>
+                        </div>
 
-                    <div class="subsection">
-                        <h4>Key Decisions Made</h4>
-                        <table class="decision-table">
+                        <div class="subsection-block">
+                            <h4>Key Decisions Made</h4>
+                            <table class="decisions-table">
                             <thead>
                                 <tr>
                                     <th>Decision</th>
                                     <th>Choice</th>
                                     <th>Notes</th>
                                 </tr>
-                            </thead>
-                            <tbody>
                                 <tr>
                                     <td>Format</td>
                                     <td>Half-hour hybrid</td>
@@ -127,112 +123,110 @@
                                     <td>Voice memos + Claude mic + text dumps</td>
                                     <td>Mix of methods, phone-first</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            </table>
+                        </div>
 
-                    <div class="subsection">
-                        <h4>Three Agencies Established</h4>
+                        <div class="subsection-block">
+                            <h4>Three Agencies Established</h4>
 
-                        <div class="agency-block">
-                            <h5><strong>Goodby Silverstein &amp; Partners</strong> (SF, 2020-2023)</h5>
+                            <div class="agency-card">
+                                <h5>1. Goodby Silverstein &amp; Partners (SF, 2020–2023)</h5>
+                                <ul>
+                                    <li><strong>Entry:</strong> Through MAIP internship → full-time</li>
+                                    <li><strong>Setting:</strong> Entirely remote, never lived in SF</li>
+                                    <li><strong>Culture:</strong> Sophisticated, academic, very smart</li>
+                                    <li><strong>Conflict:</strong> Peak performativeness (Covid + BLM)</li>
+                                    <li><strong>Key moment:</strong> Vaccine incident (denied office access)</li>
+                                    <li><strong>Protagonist role:</strong> Junior Strategist entire time (never promoted)</li>
+                                    <li><strong>Theme:</strong> "Eyes wide open" awakening</li>
+                                </ul>
+                            </div>
+
+                            <div class="agency-card">
+                                <h5>2. Wieden+Kennedy (Portland, 2023–2024)</h5>
+                                <ul>
+                                    <li><strong>Culture:</strong> Most famous agency in the world (Nike)</li>
+                                    <li><strong>Unique:</strong> First time in-person at an agency</li>
+                                    <li><strong>Vibe:</strong> Height of cult-like buy-in</li>
+                                    <li><strong>Setting:</strong> "Keep Portland Weird" culture</li>
+                                    <li><strong>Key moment:</strong> Got laid off — major plot point</li>
+                                    <li><strong>Protagonist role:</strong> Senior / Comms &amp; Media Supervisor</li>
+                                </ul>
+                            </div>
+
+                            <div class="agency-card">
+                                <h5>3. TBWA\Chiat\Day (Los Angeles, 2024–present)</h5>
+                                <ul>
+                                    <li><strong>Vibe:</strong> Chill corporate America</li>
+                                    <li><strong>Culture:</strong> LA "work" culture</li>
+                                    <li><strong>Context:</strong> Omnicom merger dynamics</li>
+                                    <li><strong>Era:</strong> Post-Covid, post-everything</li>
+                                    <li><strong>Protagonist role:</strong> Senior Connection Strategist</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="subsection-block">
+                            <h4>Characters Mentioned (Not Yet Detailed)</h4>
+                            <p>Leslie B, Jason, Christine, Sarah, Tony, Jeff, Grace, Kaleb, Corey, Taranee, Kieran, Myles, Janel, Briana, Lyricee, Rich, Sharcina, Taij, Alia T, Ezana, JV + Lauren, Jared, Judy, Eneda, Maddy</p>
+                            <p>Also mentioned: Dez Marzette, Jeff Goodby (as real industry figures / resources)</p>
+                        </div>
+
+                        <div class="subsection-block">
+                            <h4>Ten Confirmed Themes</h4>
+                            <ol>
+                                <li>Cognitive Dissonance</li>
+                                <li>Cult-Like Buy-In (or opt out)</li>
+                                <li>A Looming Apocalypse</li>
+                                <li>Cultural + Societal Shifts</li>
+                                <li>Reclamation</li>
+                                <li>First-Mover's Advantage</li>
+                                <li>Performativeness</li>
+                                <li>Allyship vs. Alliance</li>
+                                <li>Creativity vs. Capitalism</li>
+                                <li>The Long Con</li>
+                            </ol>
+                        </div>
+
+                        <div class="subsection-block">
+                            <h4>Show Influences &amp; References</h4>
                             <ul>
-                                <li>Entry through MAIP internship → full-time</li>
-                                <li>Entirely remote, never lived in SF</li>
-                                <li>Sophisticated, academic, very smart</li>
-                                <li>Peak performativeness (Covid + BLM)</li>
-                                <li>Vaccine incident (denied office access)</li>
-                                <li>Junior Strategist entire time (never promoted)</li>
-                                <li>"Eyes wide open" awakening</li>
+                                <li><em>The Spook Who Sat by the Door</em> — vibes</li>
+                                <li><em>Last Black Man in SF</em> — tone/theme</li>
+                                <li><em>Keep Portland Weird</em> — setting/culture</li>
+                                <li><em>Go</em> (the board game) — Move #37 + Move #78 (strategic metaphor)</li>
+                                <li><em>Lost</em> — "The Long Con" (narrative structure)</li>
                             </ul>
                         </div>
 
-                        <div class="agency-block">
-                            <h5><strong>Wieden+Kennedy</strong> (Portland, 2023-2024)</h5>
+                        <div class="subsection-block">
+                            <h4>What Was Built</h4>
                             <ul>
-                                <li>Most famous agency in the world (Nike)</li>
-                                <li>First time in-person at an agency</li>
-                                <li>Height of cult-like buy-in</li>
-                                <li>"Keep Portland Weird" culture</li>
-                                <li>Got laid off — major plot point</li>
-                                <li>Senior / Comms &amp; Media Supervisor</li>
+                                <li>Full project directory structure</li>
+                                <li>CLAUDE.md with project context, working agreements, model usage</li>
+                                <li>Series bible framework (00-overview.md)</li>
+                                <li>Custom skills: capture-idea, character-profile, episode-outline, session-review, world-build</li>
+                                <li>Planning docs: session-log, open-questions, next-steps</li>
+                                <li>Agency research files</li>
+                                <li>Reference files (comp shows, playlist)</li>
                             </ul>
                         </div>
+                    </article>
 
-                        <div class="agency-block">
-                            <h5><strong>TBWA\Chiat\Day</strong> (LA, 2024-present)</h5>
+                    <!-- Session 2 -->
+                    <article class="subsection">
+                        <h3>Session 2 — 2026-02-25 — Character Deep Dive &amp; Interview</h3>
+
+                        <div class="subsection-block">
+                            <h4>What Happened</h4>
                             <ul>
-                                <li>Chill corporate America</li>
-                                <li>LA "work" culture</li>
-                                <li>Omnicom merger dynamics</li>
-                                <li>Post-Covid, post-everything era</li>
-                                <li>Senior Connection Strategist</li>
+                                <li>Returned to build out characters and stories via structured interview</li>
+                                <li>Built site infrastructure (index.html, series-bible.html) for viewing the bible</li>
+                                <li>Beginning character profiling from the 25+ named list</li>
                             </ul>
                         </div>
-                    </div>
-
-                    <div class="subsection">
-                        <h4>Characters Mentioned (Not Yet Detailed)</h4>
-                        <p>Leslie B, Jason, Christine, Sarah, Tony, Jeff, Grace, Kaleb, Corey, Taranee, Kieran, Myles, Janel, Briana, Lyricee, Rich, Sharcina, Taij, Alia T, Ezana, JV + Lauren, Jared, Judy, Eneda, Maddy</p>
-                        <p><em>Also mentioned: Dez Marzette, Jeff Goodby (as real industry figures / resources)</em></p>
-                    </div>
-
-                    <div class="subsection">
-                        <h4>Themes Confirmed</h4>
-                        <ol>
-                            <li><span class="tag-theme">Cognitive Dissonance</span></li>
-                            <li><span class="tag-theme">Cult-Like Buy-In</span> (or opt out)</li>
-                            <li><span class="tag-theme">A Looming Apocalypse</span></li>
-                            <li><span class="tag-theme">Cultural + Societal Shifts</span></li>
-                            <li><span class="tag-theme">Reclamation</span></li>
-                            <li><span class="tag-theme">First-Mover's Advantage</span></li>
-                            <li><span class="tag-theme">Performativeness</span></li>
-                            <li><span class="tag-theme">Allyship vs. Alliance</span></li>
-                            <li><span class="tag-theme">Creativity vs. Capitalism</span></li>
-                            <li><span class="tag-theme">The Long Con</span></li>
-                        </ol>
-                    </div>
-
-                    <div class="subsection">
-                        <h4>Show Influences / References</h4>
-                        <ul>
-                            <li><strong>The Spook Who Sat by the Door</strong> (vibes)</li>
-                            <li><strong>Last Black Man in SF</strong> (tone/theme)</li>
-                            <li><strong>Keep Portland Weird</strong> (setting/culture)</li>
-                            <li><strong>Go</strong> (the board game) — Move #37 + Move #78 (strategic metaphor)</li>
-                            <li><strong>Lost</strong> — "The Long Con" (narrative structure)</li>
-                        </ul>
-                    </div>
-
-                    <div class="subsection">
-                        <h4>What Was Built</h4>
-                        <ul>
-                            <li>Full project directory structure</li>
-                            <li>CLAUDE.md with project context, working agreements, model usage</li>
-                            <li>Series bible framework (00-overview.md)</li>
-                            <li>Custom skills: capture-idea, character-profile, episode-outline, session-review, world-build</li>
-                            <li>Planning docs: session-log, open-questions, next-steps</li>
-                            <li>Agency research files</li>
-                            <li>Reference files (comp shows, playlist)</li>
-                        </ul>
-                    </div>
-
-                    <div class="subsection">
-                        <h4>Open Items for Next Session</h4>
-                        <ul class="checklist">
-                            <li>Detail the top 5-10 characters</li>
-                            <li>MAIP's full role in the narrative</li>
-                            <li>Creator's writing background and influences</li>
-                            <li>Fictionalized names for agencies and characters</li>
-                            <li>Season arc breakdowns</li>
-                            <li>The "never promoted at GSP" story</li>
-                            <li>The W+K layoff story</li>
-                            <li>The vaccination incident at GSP</li>
-                            <li>Specific memories and anecdotes to seed episodes</li>
-                        </ul>
-                    </div>
-                </article>
-            </section>
+                    </article>
+                </section>
 
             <!-- OPEN QUESTIONS SECTION -->
             <section class="section" id="questions">
