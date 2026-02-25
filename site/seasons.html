@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Season Arcs | The Agency / Agency — Series Bible</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ── Season card containers ───────────────────────────────────────── */
+    .season-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .season-card-header {
+      padding: 24px 28px 20px;
+    }
+
+    .season-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .season-card-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .season-card-header h2 .season-subtitle {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 18px;
+    }
+
+    .season-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .season-meta-item {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .season-meta-item::before {
+      content: '·';
+      color: var(--border-light);
+    }
+
+    .season-meta-item:first-child::before {
+      display: none;
+    }
+
+    /* ── Era accent bar at top of each card ──────────────────────────── */
+    .season-card-accent {
+      height: 4px;
+      width: 100%;
+    }
+
+    .season-card-accent-1 { background: var(--accent-blue); }
+    .season-card-accent-2 { background: var(--accent-purple); }
+    .season-card-accent-3 { background: var(--accent-warm); }
+    .season-card-accent-future {
+      background: linear-gradient(90deg, var(--border-color), var(--border-light));
+    }
+
+    /* ── Card body sections ──────────────────────────────────────────── */
+    .season-card-body {
+      padding: 0 28px 28px;
+    }
+
+    .season-card-body .arc-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      padding-top: 4px;
+    }
+
+    .season-card-body .arc-text strong {
+      color: var(--text-primary);
+    }
+
+    .season-card-body .arc-text em {
+      color: var(--accent-warm);
+      font-style: italic;
+    }
+
+    /* ── Two-column beats + tone layout ─────────────────────────────── */
+    .season-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .season-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ── Tone box ────────────────────────────────────────────────────── */
+    .tone-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+
+    .tone-box p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .tone-box p em {
+      color: var(--accent-warm);
+      font-style: italic;
+    }
+
+    /* ── Checklist inside season cards ───────────────────────────────── */
+    .season-card .checklist li {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Theme tags row ──────────────────────────────────────────────── */
+    .themes-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .themes-row-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    /* ── Era-specific tag color overrides ───────────────────────────── */
+    .season-card.era-1 .tag.tag-theme {
+      background: rgba(91, 143, 185, 0.12);
+      color: var(--accent-blue);
+    }
+
+    .season-card.era-2 .tag.tag-theme {
+      background: rgba(155, 127, 212, 0.12);
+      color: var(--accent-purple);
+    }
+
+    .season-card.era-3 .tag.tag-theme {
+      background: rgba(212, 149, 106, 0.12);
+      color: var(--accent-warm);
+    }
+
+    /* ── Future seasons placeholder ─────────────────────────────────── */
+    .season-card.future {
+      background: var(--bg-secondary);
+      border-style: dashed;
+      opacity: 0.75;
+    }
+
+    .season-card.future .season-card-header h2 {
+      color: var(--text-muted);
+    }
+
+    .season-card.future .season-card-header h2 .season-subtitle {
+      color: var(--text-muted);
+    }
+
+    .future-ideas {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .future-ideas li {
+      padding: 7px 0 7px 20px;
+      position: relative;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .future-ideas li:last-child {
+      border-bottom: none;
+    }
+
+    .future-ideas li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border-light);
+    }
+
+    /* ── Non-linear section ──────────────────────────────────────────── */
+    .nonlinear-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .nonlinear-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+
+    .nonlinear-item h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .nonlinear-item p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* ── Status section ─────────────────────────────────────────────── */
+    .status-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+    }
+
+    .checklist.status-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .checklist.status-list li.done {
+      color: var(--text-primary);
+    }
+
+    /* ── Page header meta pills ──────────────────────────────────────── */
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .meta-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-blue  { background: var(--accent-blue); }
+    .dot-purple { background: var(--accent-purple); }
+    .dot-warm  { background: var(--accent-warm); }
+    .dot-gold  { background: var(--accent-gold); }
+
+    /* ── Season timeline overview ─────────────────────────────────────── */
+    .season-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .st-item {
+      padding: 18px 16px;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .st-item:last-child {
+      border-right: none;
+    }
+
+    .st-season-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .st-item h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .st-item p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .st-bar {
+      height: 3px;
+      border-radius: 0;
+      margin-top: 14px;
+    }
+
+    .st-bar-1 { background: var(--accent-blue); }
+    .st-bar-2 { background: var(--accent-purple); }
+    .st-bar-3 { background: var(--accent-warm); }
+    .st-bar-future {
+      background: var(--border-light);
+    }
+
+    .st-item.future-item h3 { color: var(--text-muted); }
+    .st-item.future-item p  { color: var(--text-muted); }
+
+    /* ── Responsive ──────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .season-columns     { grid-template-columns: 1fr; }
+      .nonlinear-grid     { grid-template-columns: 1fr; }
+      .status-columns     { grid-template-columns: 1fr; gap: 0; }
+      .season-timeline    { grid-template-columns: 1fr 1fr; }
+      .st-item:nth-child(2) { border-right: none; }
+      .st-item:nth-child(3) { border-top: 1px solid var(--border-color); }
+      .st-item:nth-child(4) { border-top: 1px solid var(--border-color); }
+    }
+
+    @media (max-width: 768px) {
+      .season-card-header  { padding: 20px 20px 16px; }
+      .season-card-body    { padding: 0 20px 20px; }
+      .season-timeline     { grid-template-columns: 1fr; }
+      .st-item             { border-right: none; border-bottom: 1px solid var(--border-color); }
+      .st-item:last-child  { border-bottom: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Mobile toggle -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">&#9776;</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1>THE AGENCY</h1>
+      <div class="subtitle">Series Bible Development</div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Main navigation">
+
+      <div class="nav-section">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
+
+      <div class="nav-section">Series Bible</div>
+      <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+      <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+      <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+      <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+      <a href="seasons.html" class="nav-link active"><span class="icon">&#9655;</span> Season Arcs</a>
+      <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+      <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+
+      <div class="nav-section">Resources</div>
+      <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+      <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+      <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
+
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- Page header -->
+    <header class="page-header">
+      <h1>Season Arcs</h1>
+      <p class="description">4-5+ seasons planned. Each season broadly covers one agency era, with non-linear jumps.</p>
+      <div class="header-meta">
+        <span class="meta-pill"><span class="dot dot-blue"></span> S1 &mdash; The Awakening</span>
+        <span class="meta-pill"><span class="dot dot-purple"></span> S2 &mdash; The Cult</span>
+        <span class="meta-pill"><span class="dot dot-warm"></span> S3 &mdash; The Reckoning</span>
+        <span class="meta-pill"><span class="dot dot-gold"></span> S4&ndash;5+ &mdash; The Disruption</span>
+      </div>
+    </header>
+
+    <!-- Page body -->
+    <div class="page-body">
+
+      <!-- SERIES STRUCTURE OVERVIEW -->
+      <section class="section">
+        <h2 class="section-title">Series Structure at a Glance</h2>
+        <div class="season-timeline">
+
+          <div class="st-item">
+            <div class="st-season-label">Season 1</div>
+            <h3>"The Awakening"</h3>
+            <p>GSP &bull; San Francisco<br>2020&ndash;2021 &bull; 8&ndash;10 eps</p>
+            <div class="st-bar st-bar-1"></div>
+          </div>
+
+          <div class="st-item">
+            <div class="st-season-label">Season 2</div>
+            <h3>"The Cult"</h3>
+            <p>W+K &bull; Portland<br>2023&ndash;2024 &bull; TBD eps</p>
+            <div class="st-bar st-bar-2"></div>
+          </div>
+
+          <div class="st-item">
+            <div class="st-season-label">Season 3</div>
+            <h3>"The Reckoning"</h3>
+            <p>TBWA &bull; Los Angeles<br>2024&ndash;2025 &bull; TBD eps</p>
+            <div class="st-bar st-bar-3"></div>
+          </div>
+
+          <div class="st-item future-item">
+            <div class="st-season-label">Seasons 4&ndash;5+</div>
+            <h3>"The Disruption"</h3>
+            <p>TBD &bull; TBD location<br>Timeline TBD</p>
+            <div class="st-bar st-bar-future"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── SEASON 1 ─────────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="season-card era-1">
+          <div class="season-card-accent season-card-accent-1"></div>
+          <div class="season-card-header">
+            <div class="season-eyebrow">Season 1</div>
+            <h2>The Awakening <span class="season-subtitle">— Goodby Silverstein &amp; Partners</span></h2>
+            <div class="season-meta-row">
+              <span class="tag tag-era-1">ERA 1</span>
+              <span class="season-meta-item">San Francisco</span>
+              <span class="season-meta-item">Timeline: 2020&ndash;2021</span>
+              <span class="season-meta-item">Episodes: TBD (8&ndash;10 target)</span>
+            </div>
+          </div>
+
+          <div class="season-card-body">
+
+            <p class="arc-text">
+              The protagonist enters advertising through MAIP at the worst/best possible moment &mdash; right as Covid hits and the world breaks open. <strong>Everything is remote.</strong> They've "made it" to one of the most prestigious agencies but experience it entirely through a screen. They watch the industry perform progressive values during BLM while doing nothing. They are the junior strategist who sees everything but can say nothing.
+            </p>
+
+            <div class="season-columns">
+              <!-- Key Beats -->
+              <div>
+                <div class="season-col-label">Key Beats</div>
+                <ul class="checklist">
+                  <li>The MAIP entry / getting the notification</li>
+                  <li>First day at GSP (remote &mdash; absurdity of starting a dream job on Zoom)</li>
+                  <li>George Floyd / BLM &mdash; watching the agency's response in real time</li>
+                  <li>The vaccination incident (denied office access)</li>
+                  <li>Being junior strategist and never getting promoted</li>
+                  <li>Relationships formed remotely &mdash; the MAIP cohort as lifeline</li>
+                  <li>Discovering the gap between agency mythology and reality</li>
+                  <li>Season finale &mdash; what pushes them toward leaving?</li>
+                </ul>
+              </div>
+
+              <!-- Tone -->
+              <div>
+                <div class="season-col-label">Tone</div>
+                <div class="tone-box">
+                  <p>Observational. Funny in the way <em>absurd corporate behavior</em> is funny. Lonely in the way remote pandemic work is lonely. Watching, learning, slowly realizing.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="themes-row">
+              <div class="themes-row-label">Dominant Themes</div>
+              <span class="tag tag-theme">Cognitive Dissonance</span>
+              <span class="tag tag-theme">Performativeness</span>
+              <span class="tag tag-theme">Cultural + Societal Shifts</span>
+              <span class="tag tag-theme">Allyship vs. Alliance</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SEASON 2 ─────────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="season-card era-2">
+          <div class="season-card-accent season-card-accent-2"></div>
+          <div class="season-card-header">
+            <div class="season-eyebrow">Season 2</div>
+            <h2>The Cult <span class="season-subtitle">— Wieden+Kennedy</span></h2>
+            <div class="season-meta-row">
+              <span class="tag tag-era-2">ERA 2</span>
+              <span class="season-meta-item">Portland</span>
+              <span class="season-meta-item">Timeline: 2023&ndash;2024</span>
+              <span class="season-meta-item">Episodes: TBD</span>
+            </div>
+          </div>
+
+          <div class="season-card-body">
+
+            <p class="arc-text">
+              The protagonist moves to Portland and enters the cult. For the first time, <strong>physically inside an agency</strong> &mdash; everything imagined and nothing like expected. W+K's mythology is intoxicating. The work is legendary. Buy-in is total. Gets swept up, achieves, belongs&hellip; then gets laid off. <em>The cult doesn't want them anymore.</em>
+            </p>
+
+            <div class="season-columns">
+              <!-- Key Beats -->
+              <div>
+                <div class="season-col-label">Key Beats</div>
+                <ul class="checklist">
+                  <li>Arriving in Portland &mdash; fish out of water (Southern Black person in whitest city)</li>
+                  <li>First day in-person &mdash; sensory overload after years of Zoom</li>
+                  <li>The W+K mythology &mdash; the pitch, the history, the Nike of it all</li>
+                  <li>Buying in &mdash; the high of belonging</li>
+                  <li>"Keep Portland Weird" &mdash; navigating Portland's progressive weirdness</li>
+                  <li>The work &mdash; what they created, what mattered, what got killed</li>
+                  <li>Cracks in the cult &mdash; seeing behind the curtain</li>
+                  <li>The layoff &mdash; how it happened, what it felt like, the aftermath</li>
+                  <li>Season finale &mdash; leaving Portland, heading to LA, changed</li>
+                </ul>
+              </div>
+
+              <!-- Tone -->
+              <div>
+                <div class="season-col-label">Tone</div>
+                <div class="tone-box">
+                  <p>More intense. Higher highs, lower lows. Comedy from <em>cult absurdity</em>; drama from genuine investment betrayed. The layoff episode should be devastating.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="themes-row">
+              <div class="themes-row-label">Dominant Themes</div>
+              <span class="tag tag-theme">Cult-Like Buy-In</span>
+              <span class="tag tag-theme">Creativity vs. Capitalism</span>
+              <span class="tag tag-theme">Reclamation</span>
+              <span class="tag tag-theme">The Long Con</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SEASON 3 ─────────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="season-card era-3">
+          <div class="season-card-accent season-card-accent-3"></div>
+          <div class="season-card-header">
+            <div class="season-eyebrow">Season 3</div>
+            <h2>The Reckoning <span class="season-subtitle">— TBWA\Chiat\Day</span></h2>
+            <div class="season-meta-row">
+              <span class="tag tag-era-3">ERA 3</span>
+              <span class="season-meta-item">Los Angeles</span>
+              <span class="season-meta-item">Timeline: 2024&ndash;2025</span>
+              <span class="season-meta-item">Episodes: TBD</span>
+            </div>
+          </div>
+
+          <div class="season-card-body">
+
+            <p class="arc-text">
+              Arrives in LA with scars and clarity. TBWA is chill, corporate, Omnicom machine. Cult energy gone &mdash; replaced by corporate entropy. But the <strong>protagonist has changed</strong>. Sees the full picture: industry, AI, consolidation, the long con. Season is about strategic positioning &mdash; <em>making moves</em>.
+            </p>
+
+            <div class="season-columns">
+              <!-- Key Beats -->
+              <div>
+                <div class="season-col-label">Key Beats</div>
+                <ul class="checklist">
+                  <li>Landing in LA &mdash; the energy shift from Portland</li>
+                  <li>TBWA culture &mdash; "Disruption" philosophy meets corporate reality</li>
+                  <li>The Omnicom merger &mdash; rumblings, implications</li>
+                  <li>AI becoming impossible to ignore &mdash; tools in meetings, people losing jobs</li>
+                  <li>The protagonist's strategic awakening &mdash; using AI, not fearing it</li>
+                  <li>Building real alliances</li>
+                  <li>The catalyst moment &mdash; when the protagonist decides to disrupt</li>
+                </ul>
+              </div>
+
+              <!-- Tone -->
+              <div>
+                <div class="season-col-label">Tone</div>
+                <div class="tone-box">
+                  <p>Calmer surface, <em>deeper currents</em>. Drier comedy. More strategic than emotional. No longer reactive &mdash; playing the game.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="themes-row">
+              <div class="themes-row-label">Dominant Themes</div>
+              <span class="tag tag-theme">A Looming Apocalypse</span>
+              <span class="tag tag-theme">First-Mover's Advantage</span>
+              <span class="tag tag-theme">The Long Con</span>
+              <span class="tag tag-theme">Reclamation</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SEASONS 4–5 ──────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="season-card future">
+          <div class="season-card-accent season-card-accent-future"></div>
+          <div class="season-card-header">
+            <div class="season-eyebrow">Seasons 4&ndash;5+</div>
+            <h2>The Disruption <span class="season-subtitle">— To Be Developed</span></h2>
+            <div class="season-meta-row">
+              <span class="tag tag-status">To Be Developed</span>
+              <span class="season-meta-item">Timeline: TBD</span>
+              <span class="season-meta-item">Episodes: TBD</span>
+            </div>
+          </div>
+
+          <div class="season-card-body">
+
+            <div class="season-col-label" style="margin-bottom:12px;">Could Involve</div>
+            <ul class="future-ideas">
+              <li>Protagonist making their move</li>
+              <li>AI crescendo at full force</li>
+              <li>Industry transformation or collapse</li>
+              <li>Journey coming full circle &mdash; outside to outside, on their own terms</li>
+            </ul>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── NON-LINEAR ELEMENTS ────────────────────────────────────────── -->
+      <section class="section">
+        <h2 class="section-title">Non-Linear Elements</h2>
+        <div class="content" style="margin-bottom: 20px;">
+          <p>The show's timeline is not strictly sequential. Non-linear devices serve thematic rather than narrative purposes &mdash; used deliberately, not as a default.</p>
+        </div>
+        <div class="nonlinear-grid">
+
+          <div class="nonlinear-item">
+            <h4>Flashbacks</h4>
+            <p>Protagonist's life before advertising &mdash; the South, college, the decision to pursue this world.</p>
+          </div>
+
+          <div class="nonlinear-item">
+            <h4>Flash-Forwards</h4>
+            <p>Brief glimpses of where things head. Creates dramatic irony &mdash; the audience knows what the protagonist doesn't yet.</p>
+          </div>
+
+          <div class="nonlinear-item">
+            <h4>Blended Timelines</h4>
+            <p>Episodes cutting between eras for thematic parallels. A 2020 moment rhymes with a 2024 one.</p>
+          </div>
+
+          <div class="nonlinear-item">
+            <h4>MAIP Threads</h4>
+            <p>The MAIP cohort provides continuity across all eras &mdash; a through-line that stretches from Season 1 to the end.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── STATUS ──────────────────────────────────────────────────────── -->
+      <section class="section">
+        <h2 class="section-title">Status</h2>
+        <div class="status-columns">
+          <ul class="checklist status-list">
+            <li class="done">Season concepts established (S1&ndash;S3)</li>
+            <li class="done">Dominant themes assigned per season</li>
+            <li class="done">Tone established per season</li>
+            <li>Episode counts decided</li>
+          </ul>
+          <ul class="checklist status-list">
+            <li>Key beats detailed with specific memories / anecdotes</li>
+            <li>Season 4&ndash;5 developed</li>
+            <li>Non-linear structure mapped in detail</li>
+            <li>Pilot episode outlined</li>
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /.page-body -->
+
+  </main><!-- /.main-content -->
+
+  <script>
+    // Mobile sidebar toggle
+    const toggle  = document.getElementById('mobileToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    toggle.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+      const isOpen = sidebar.classList.contains('open');
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      toggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+    });
+
+    // Close sidebar when a nav link is tapped on mobile
+    sidebar.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('open');
+          toggle.setAttribute('aria-label', 'Open navigation');
+          toggle.innerHTML = '&#9776;';
+        }
+      });
+    });
+
+    // Close sidebar on outside click (mobile)
+    document.addEventListener('click', function (e) {
+      if (
+        window.innerWidth <= 768 &&
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        e.target !== toggle
+      ) {
+        sidebar.classList.remove('open');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        toggle.innerHTML = '&#9776;';
+      }
+    });
+  </script>
+
+</body>
+</html>

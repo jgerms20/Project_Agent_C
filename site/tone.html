@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tone &amp; Style | The Agency / Agency &mdash; Series Bible</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Tone & Style page-specific styles */
+
+    /* Page header meta pills */
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .meta-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-gold  { background: var(--accent-gold); }
+    .dot-warm  { background: var(--accent-warm); }
+    .dot-blue  { background: var(--accent-blue); }
+    .dot-green { background: var(--accent-green); }
+
+    /* Section title override — slightly larger */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+
+    /* ---- TONAL DNA ---- */
+
+    /* Primary/Secondary callout rows */
+    .tonal-primary {
+      background: rgba(201, 168, 76, 0.07);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+
+    .tonal-primary .tonal-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .tonal-primary .tonal-value {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .tonal-secondary {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 22px;
+      margin-bottom: 24px;
+    }
+
+    .tonal-secondary .tonal-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .tonal-secondary .tonal-value {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Spectrum sliders */
+    .spectrum-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .spectrum-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    .spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .spectrum-track {
+      height: 6px;
+      background: var(--border-color);
+      border-radius: 3px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .spectrum-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+    }
+
+    .spectrum-pip {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 0 0 2px var(--accent-gold-dim);
+    }
+
+    .spectrum-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* Atlanta-style tone shift cards */
+    .tone-shift-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .tone-shift-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--accent-gold-dim);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      transition: all var(--transition);
+    }
+
+    .tone-shift-card:hover {
+      background: var(--bg-card-hover);
+      border-left-color: var(--accent-gold);
+    }
+
+    .tone-shift-card .shift-type {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .tone-shift-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ---- COMP TABLE ---- */
+
+    .comp-table-wrap {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .comp-table-wrap table {
+      margin: 0;
+    }
+
+    .comp-table-wrap th:first-child,
+    .comp-table-wrap td:first-child {
+      width: 140px;
+      min-width: 120px;
+    }
+
+    .comp-table-wrap td.show-title {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .comp-table-wrap td.borrow {
+      color: var(--accent-green);
+    }
+
+    .comp-table-wrap td.no-borrow {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ---- GENRE CARDS ---- */
+
+    .genre-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .genre-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 18px 20px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .genre-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+    }
+
+    .genre-card:nth-child(1)::before { background: var(--accent-gold); }
+    .genre-card:nth-child(2)::before { background: var(--accent-warm); }
+    .genre-card:nth-child(3)::before { background: var(--accent-purple); }
+    .genre-card:nth-child(4)::before { background: var(--accent-blue); }
+    .genre-card:nth-child(5)::before { background: var(--accent-red); }
+    .genre-card:nth-child(6)::before { background: var(--accent-green); }
+
+    .genre-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-gold-dim);
+      transform: translateY(-2px);
+    }
+
+    .genre-card .genre-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .genre-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .genre-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ---- MUSIC TABLE ---- */
+
+    .music-table-wrap {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .music-table-wrap table {
+      margin: 0;
+    }
+
+    td.music-track {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    td.music-artist {
+      color: var(--accent-warm);
+      font-weight: 500;
+    }
+
+    td.music-mood {
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* TBD section — open questions style */
+    .tbd-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .tbd-block h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* Visual style era palette row */
+    .era-palette-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .era-palette {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .era-palette .era-swatch {
+      height: 4px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    .era-palette:nth-child(1) .era-swatch { background: var(--accent-blue); }
+    .era-palette:nth-child(2) .era-swatch { background: var(--accent-purple); }
+    .era-palette:nth-child(3) .era-swatch { background: var(--accent-warm); }
+
+    .era-palette .era-name {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .era-palette:nth-child(1) .era-name { color: var(--accent-blue); }
+    .era-palette:nth-child(2) .era-name { color: var(--accent-purple); }
+    .era-palette:nth-child(3) .era-name { color: var(--accent-warm); }
+
+    .era-palette p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Status checklist two-column */
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+    }
+
+    .checklist.status-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .checklist.status-list li.done {
+      color: var(--text-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .spectrum-grid { grid-template-columns: 1fr; }
+      .tone-shift-grid { grid-template-columns: 1fr; }
+      .genre-card-grid { grid-template-columns: repeat(2, 1fr); }
+      .era-palette-grid { grid-template-columns: 1fr; }
+      .status-grid { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .genre-card-grid { grid-template-columns: 1fr; }
+      .comp-table-wrap th:first-child,
+      .comp-table-wrap td:first-child { width: auto; min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile toggle -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">&#9776;</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1>THE AGENCY</h1>
+      <div class="subtitle">Series Bible Development</div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Main navigation">
+
+      <div class="nav-section">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
+
+      <div class="nav-section">Series Bible</div>
+      <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+      <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+      <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+      <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+      <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+      <a href="tone.html" class="nav-link active"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+      <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+
+      <div class="nav-section">Resources</div>
+      <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+      <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+      <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
+
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- Page header -->
+    <header class="page-header">
+      <h1>Tone &amp; Style</h1>
+      <p class="description">Drama-forward with dark humor &mdash; the show earns the right to be funny, devastating, and surreal in equal measure.</p>
+      <div class="header-meta">
+        <span class="meta-pill"><span class="dot dot-gold"></span> Drama-forward</span>
+        <span class="meta-pill"><span class="dot dot-warm"></span> Dark Humor</span>
+        <span class="meta-pill"><span class="dot dot-blue"></span> Episode-dependent Shifts</span>
+        <span class="meta-pill"><span class="dot dot-green"></span> Half-hour Hybrid</span>
+      </div>
+    </header>
+
+    <!-- Page body -->
+    <div class="page-body">
+
+      <!-- TONAL DNA -->
+      <section class="section" id="tonal-dna">
+        <h2 class="section-title">Tonal DNA</h2>
+
+        <div class="tonal-primary">
+          <div class="tonal-label">Primary</div>
+          <div class="tonal-value">Drama-forward with dark humor</div>
+        </div>
+
+        <div class="tonal-secondary">
+          <div class="tonal-label">Secondary</div>
+          <div class="tonal-value">Episode-dependent tonal shifts &mdash; each episode earns its own register</div>
+        </div>
+
+        <!-- Spectrum -->
+        <div class="subsection">
+          <h3>The Spectrum</h3>
+          <div class="spectrum-grid">
+
+            <!-- Light / Dark — leans dark (3/5 = 60%) -->
+            <div class="spectrum-item">
+              <div class="spectrum-labels">
+                <span>Light</span>
+                <span>Dark</span>
+              </div>
+              <div class="spectrum-track">
+                <div class="spectrum-fill" style="width: 60%;"></div>
+                <div class="spectrum-pip" style="left: 60%;"></div>
+              </div>
+              <div class="spectrum-note">Leans dark &mdash; 3 out of 5</div>
+            </div>
+
+            <!-- Simple / Complex — leans complex (75%) -->
+            <div class="spectrum-item">
+              <div class="spectrum-labels">
+                <span>Simple</span>
+                <span>Complex</span>
+              </div>
+              <div class="spectrum-track">
+                <div class="spectrum-fill" style="width: 75%;"></div>
+                <div class="spectrum-pip" style="left: 75%;"></div>
+              </div>
+              <div class="spectrum-note">Leans complex</div>
+            </div>
+
+            <!-- Casual / Formal — casual-leaning (35%) -->
+            <div class="spectrum-item">
+              <div class="spectrum-labels">
+                <span>Casual</span>
+                <span>Formal</span>
+              </div>
+              <div class="spectrum-track">
+                <div class="spectrum-fill" style="width: 35%;"></div>
+                <div class="spectrum-pip" style="left: 35%;"></div>
+              </div>
+              <div class="spectrum-note">Casual-leaning</div>
+            </div>
+
+            <!-- Niche / Broad — slightly niche (40%) -->
+            <div class="spectrum-item">
+              <div class="spectrum-labels">
+                <span>Niche</span>
+                <span>Broad</span>
+              </div>
+              <div class="spectrum-track">
+                <div class="spectrum-fill" style="width: 40%;"></div>
+                <div class="spectrum-pip" style="left: 40%;"></div>
+              </div>
+              <div class="spectrum-note">Slightly niche &mdash; IYKYK energy that still tells a universal story</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- How tone shifts -->
+        <div class="subsection">
+          <h3>How Tone Shifts by Episode</h3>
+          <div class="content" style="margin-bottom: 16px;">
+            <p>Like <em>Atlanta</em> seasons 2&ndash;3, individual episodes can radically shift register. The show has range. Not locked into one mode. The audience trusts that each episode will be its own thing.</p>
+          </div>
+          <div class="tone-shift-grid">
+
+            <div class="tone-shift-card">
+              <div class="shift-type">Comedy</div>
+              <p>Absurd agency all-hands meetings. Corporate-speak theater. The small indignities played for maximum awkward laughs.</p>
+            </div>
+
+            <div class="tone-shift-card">
+              <div class="shift-type">Drama</div>
+              <p>The layoff aftermath. The slow realization of what the agency actually is. Stakes that are real and personal.</p>
+            </div>
+
+            <div class="tone-shift-card">
+              <div class="shift-type">Surreal</div>
+              <p>Entering the protagonist&rsquo;s inner world. The gap between what&rsquo;s said in a meeting and what it means. Dream-logic workplace.</p>
+            </div>
+
+            <div class="tone-shift-card">
+              <div class="shift-type">Thriller-adjacent</div>
+              <p>Corporate espionage. Merger politics. Power moves made in hallways and calendar invites. The chess game made visible.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARABLE TONE MAP -->
+      <section class="section" id="comp-map">
+        <h2 class="section-title">Comparable Tone Map</h2>
+        <div class="content" style="margin-bottom: 12px;">
+          <p>Each comp show contributes something specific. The show isn&rsquo;t any one of these &mdash; it&rsquo;s the territory they collectively point toward.</p>
+        </div>
+        <div class="comp-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Show</th>
+                <th>What We Borrow</th>
+                <th>What We Don&rsquo;t</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="show-title">Mad Men</td>
+                <td class="borrow">Character depth, period-piece texture, industry authority</td>
+                <td class="no-borrow">Not as slow. Not as white. Not as reverential.</td>
+              </tr>
+              <tr>
+                <td class="show-title">Atlanta</td>
+                <td class="borrow">Tonal range, episode independence, surreal touches, Black POV</td>
+                <td class="no-borrow">Less abstract. More industry-specific. More serialized.</td>
+              </tr>
+              <tr>
+                <td class="show-title">Silicon Valley</td>
+                <td class="borrow">Insider humor, IYKYK energy, real scenarios with fake names</td>
+                <td class="no-borrow">More dramatic weight. Race is central. Higher stakes.</td>
+              </tr>
+              <tr>
+                <td class="show-title">Industry</td>
+                <td class="borrow">Intensity, soundtrack, power dynamics, changing of the guard</td>
+                <td class="no-borrow">Less salacious. More comedic range. American.</td>
+              </tr>
+              <tr>
+                <td class="show-title">The Bear</td>
+                <td class="borrow">Workplace intensity, visual style, music integration, half-hour drama</td>
+                <td class="no-borrow">Less chaotic kitchen, more calculated boardroom.</td>
+              </tr>
+              <tr>
+                <td class="show-title">Succession</td>
+                <td class="borrow">Corporate power dynamics, dark humor, cult dynamics</td>
+                <td class="no-borrow">Not a family story. Not billionaires. Different world, similar energy.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- GENRE ELEMENTS -->
+      <section class="section" id="genre">
+        <h2 class="section-title">Genre Elements</h2>
+        <div class="content" style="margin-bottom: 16px;">
+          <p>The show operates across multiple genre registers simultaneously &mdash; the blend shifts episode to episode, but all six are always present in the background.</p>
+        </div>
+        <div class="genre-card-grid">
+
+          <div class="genre-card">
+            <div class="genre-num">01</div>
+            <h3>Drama</h3>
+            <p>The core. Character-driven storytelling about real stakes &mdash; career, identity, belonging, and what it costs to be the only one in the room.</p>
+          </div>
+
+          <div class="genre-card">
+            <div class="genre-num">02</div>
+            <h3>Comedy</h3>
+            <p>Dark humor, absurdist corporate comedy, fish-out-of-water laughs. The joke is the gap between the rhetoric and the reality.</p>
+          </div>
+
+          <div class="genre-card">
+            <div class="genre-num">03</div>
+            <h3>Romance</h3>
+            <p>Workplace relationships, complications, the personal cost of professional ambition. Love as another arena where the same dynamics play out.</p>
+          </div>
+
+          <div class="genre-card">
+            <div class="genre-num">04</div>
+            <h3>Thriller</h3>
+            <p>Corporate politics, mergers, power moves, strategic chess. The tension of watching someone navigate a system designed to keep them out.</p>
+          </div>
+
+          <div class="genre-card">
+            <div class="genre-num">05</div>
+            <h3>Crime</h3>
+            <p>White-collar adjacent. Exploitative practices &mdash; of culture, of people, of creativity &mdash; framed as what they are: structural crime with no handcuffs.</p>
+          </div>
+
+          <div class="genre-card">
+            <div class="genre-num">06</div>
+            <h3>Documentary Feel</h3>
+            <p>Moments of authenticity that feel almost too real. The look, the language, the specificity of the world &mdash; earned by the creator having actually been there.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- MUSIC STRATEGY -->
+      <section class="section" id="music">
+        <h2 class="section-title">Music Strategy</h2>
+
+        <!-- Sonic Mood Board table -->
+        <div class="subsection">
+          <h3>Sonic Mood Board</h3>
+          <div class="content" style="margin-bottom: 12px;">
+            <p>The tracks that define the show&rsquo;s emotional intelligence &mdash; ambition, defiance, systemic critique, and the long game, all at once.</p>
+          </div>
+          <div class="music-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Track</th>
+                  <th>Artist</th>
+                  <th>Mood / Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="music-track">Run It Up</td>
+                  <td class="music-artist">Tyler, The Creator</td>
+                  <td class="music-mood">Ambition, irreverence</td>
+                </tr>
+                <tr>
+                  <td class="music-track">New Slaves</td>
+                  <td class="music-artist">Kanye West</td>
+                  <td class="music-mood">Systemic exploitation, defiance, rage</td>
+                </tr>
+                <tr>
+                  <td class="music-track">Story of OJ</td>
+                  <td class="music-artist">Jay-Z</td>
+                  <td class="music-mood">Race and money, the long game</td>
+                </tr>
+                <tr>
+                  <td class="music-track">Legacy</td>
+                  <td class="music-artist">Jay-Z</td>
+                  <td class="music-mood">Building something that outlasts you</td>
+                </tr>
+                <tr>
+                  <td class="music-track">Organic Dreams</td>
+                  <td class="music-artist">Larry June</td>
+                  <td class="music-mood">West Coast ambition, smooth hustle</td>
+                </tr>
+                <tr>
+                  <td class="music-track">Count Up That Loot</td>
+                  <td class="music-artist">Nipsey Hussle</td>
+                  <td class="music-mood">Grinding with purpose</td>
+                </tr>
+                <tr>
+                  <td class="music-track">Break My Soul</td>
+                  <td class="music-artist">Beyonc&eacute;</td>
+                  <td class="music-mood">Liberation, self-ownership</td>
+                </tr>
+                <tr>
+                  <td class="music-track">Man at the Garden</td>
+                  <td class="music-artist">Kendrick Lamar</td>
+                  <td class="music-mood">Standing alone, the weight of being the one</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Music approach — TBD -->
+        <div class="subsection">
+          <h3>Music Approach <span style="font-size: 12px; font-weight: 400; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-left: 8px;">TBD</span></h3>
+          <div class="tbd-block">
+            <h4>Open Questions</h4>
+            <ul class="checklist content">
+              <li>Needle-drop heavy vs. original score vs. hybrid?</li>
+              <li>Diegetic vs. non-diegetic?</li>
+              <li>Does the protagonist have a personal relationship with music?</li>
+              <li>Budget considerations for licensed music</li>
+              <li>Era-specific music to match each agency period?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- NARRATIVE DEVICES -->
+      <section class="section" id="narrative-devices">
+        <h2 class="section-title">Narrative Devices <span style="font-size: 13px; font-weight: 400; color: var(--text-muted); text-transform: none; letter-spacing: 0; margin-left: 8px;">TBD</span></h2>
+        <div class="content" style="margin-bottom: 16px;">
+          <p>The formal choices that will define the show&rsquo;s voice. Several candidates &mdash; none locked yet.</p>
+        </div>
+        <div class="tbd-block">
+          <h4>Candidates / Open Questions</h4>
+          <ul class="checklist content">
+            <li>Voice-over / narration?</li>
+            <li>Direct-to-camera &mdash; <em>Fleabag</em> style?</li>
+            <li>The Go metaphor &mdash; Move #37, Move #78</li>
+            <li>Advertising as narrative device (fake ads within the show?)</li>
+            <li>Cold open style</li>
+            <li>Episode title cards / naming convention</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- VISUAL STYLE -->
+      <section class="section" id="visual-style">
+        <h2 class="section-title">Visual Style <span style="font-size: 13px; font-weight: 400; color: var(--text-muted); text-transform: none; letter-spacing: 0; margin-left: 8px;">TBD</span></h2>
+
+        <!-- Era color palettes -->
+        <div class="subsection">
+          <h3>Color Palette by Era</h3>
+          <div class="content" style="margin-bottom: 16px;">
+            <p>Each agency era has its own visual language &mdash; grounded in the city, the office aesthetic, and how the protagonist experiences that world.</p>
+          </div>
+          <div class="era-palette-grid">
+
+            <div class="era-palette">
+              <div class="era-swatch"></div>
+              <div class="era-name">Era 1 &mdash; GSP / San Francisco</div>
+              <p>Cool, blue-tinted, screen-lit. The digital remove of remote work. Everything experienced through glass.</p>
+            </div>
+
+            <div class="era-palette">
+              <div class="era-swatch"></div>
+              <div class="era-name">Era 2 &mdash; W+K / Portland</div>
+              <p>Warm, saturated, physical. The shock of being in a body in an office. Rich greens, textured surfaces, rain.</p>
+            </div>
+
+            <div class="era-palette">
+              <div class="era-swatch"></div>
+              <div class="era-name">Era 3 &mdash; TBWA / Los Angeles</div>
+              <p>Golden, hazy, LA-ambient. Post-everything ease on the surface. The light that makes everything look fine.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Visual open questions -->
+        <div class="subsection">
+          <h3>Open Questions</h3>
+          <div class="tbd-block">
+            <h4>Still to Develop</h4>
+            <ul class="checklist content">
+              <li>Cinematography references needed</li>
+              <li>How does remote work get depicted visually? (Era 1 specifically)</li>
+              <li>Office aesthetics &mdash; each agency must feel distinct</li>
+              <li>City cinematography &mdash; SF, Portland, LA each have a visual language</li>
+              <li>Camera movement language &mdash; handheld vs. locked vs. era-specific?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATUS -->
+      <section class="section" id="status">
+        <h2 class="section-title">Status</h2>
+        <div class="status-grid">
+          <ul class="checklist status-list">
+            <li class="done">Tonal DNA established</li>
+            <li class="done">Comp shows mapped</li>
+            <li class="done">Playlist captured</li>
+            <li>Visual style developed</li>
+          </ul>
+          <ul class="checklist status-list">
+            <li>Music strategy decided</li>
+            <li>Narrative devices chosen</li>
+            <li>Cold open style decided</li>
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /.page-body -->
+
+  </main><!-- /.main-content -->
+
+  <script>
+    // Mobile sidebar toggle
+    const toggle = document.getElementById('mobileToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    toggle.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+      const isOpen = sidebar.classList.contains('open');
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      toggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+    });
+
+    // Close sidebar when nav link tapped on mobile
+    sidebar.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('open');
+          toggle.setAttribute('aria-label', 'Open navigation');
+          toggle.innerHTML = '&#9776;';
+        }
+      });
+    });
+
+    // Close sidebar on outside click (mobile)
+    document.addEventListener('click', function (e) {
+      if (
+        window.innerWidth <= 768 &&
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        e.target !== toggle
+      ) {
+        sidebar.classList.remove('open');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        toggle.innerHTML = '&#9776;';
+      }
+    });
+  </script>
+
+</body>
+</html>
