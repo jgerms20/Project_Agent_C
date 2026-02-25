@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview | The Agency / Agency — Series Bible</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Overview-specific styles */
+
+    /* Page header meta pills row */
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .meta-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      flex-shrink: 0;
+    }
+
+    /* Logline blockquote override — larger, more prominent */
+    .logline {
+      border-left: 4px solid var(--accent-gold);
+      padding: 20px 24px;
+      margin: 0 0 32px 0;
+      background: rgba(201, 168, 76, 0.06);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .logline p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-primary) !important;
+      font-style: italic;
+      margin: 0 !important;
+    }
+
+    /* Comp cards — 2-column, wider content */
+    .comp-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .comp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px 22px;
+      transition: all var(--transition);
+    }
+
+    .comp-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-gold-dim);
+      transform: translateY(-1px);
+    }
+
+    .comp-card-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .comp-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .comp-detail {
+      margin-bottom: 10px;
+    }
+
+    .comp-detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .comp-detail p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .comp-divider {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 12px 0;
+    }
+
+    /* Format & structure list */
+    .format-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .format-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .format-list li:last-child {
+      border-bottom: none;
+    }
+
+    .format-list .format-key {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+
+    /* AI thread timeline */
+    .ai-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ai-phase {
+      padding: 18px 16px;
+      border-right: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .ai-phase:last-child {
+      border-right: none;
+    }
+
+    .ai-phase-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .ai-phase h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .ai-phase p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .ai-phase-bar {
+      height: 3px;
+      border-radius: 0;
+      margin-top: 14px;
+    }
+
+    .ai-phase:nth-child(1) .ai-phase-bar { background: rgba(91, 143, 185, 0.3); }
+    .ai-phase:nth-child(2) .ai-phase-bar { background: rgba(91, 143, 185, 0.6); }
+    .ai-phase:nth-child(3) .ai-phase-bar { background: rgba(201, 168, 76, 0.7); }
+    .ai-phase:nth-child(4) .ai-phase-bar { background: var(--accent-gold); }
+
+    /* Playlist table artist column highlight */
+    td.track-title {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    td.track-artist {
+      color: var(--accent-warm);
+    }
+
+    td.track-why {
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* Status checklist two-column */
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+    }
+
+    .checklist.status-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .checklist.status-list li.done {
+      color: var(--text-primary);
+    }
+
+    /* Section title */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .comp-card-grid { grid-template-columns: 1fr; }
+      .ai-timeline { grid-template-columns: 1fr 1fr; }
+      .ai-phase { border-bottom: 1px solid var(--border-color); }
+      .ai-phase:nth-child(2) { border-right: none; }
+      .status-grid { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .format-list .format-key { min-width: 100px; }
+      .ai-timeline { grid-template-columns: 1fr; }
+      .ai-phase { border-right: none; border-bottom: 1px solid var(--border-color); }
+      .ai-phase:last-child { border-bottom: none; }
+      .header-meta { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile toggle -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">&#9776;</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1>THE AGENCY</h1>
+      <div class="subtitle">Series Bible Development</div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Main navigation">
+
+      <div class="nav-section">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
+
+      <div class="nav-section">Series Bible</div>
+      <a href="overview.html" class="nav-link active"><span class="icon">&#9678;</span> Overview</a>
+      <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+      <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+      <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+      <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+      <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+      <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+
+      <div class="nav-section">Resources</div>
+      <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+      <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+      <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
+
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- Page header -->
+    <header class="page-header">
+      <h1>Overview</h1>
+      <p class="description">Series bible foundation — logline, premise, format, comps, and the AI thread.</p>
+      <div class="header-meta">
+        <span class="meta-pill"><span class="dot"></span> Half-Hour Hybrid</span>
+        <span class="meta-pill"><span class="dot"></span> 4&ndash;5+ Seasons</span>
+        <span class="meta-pill"><span class="dot"></span> Drama-forward &middot; Dark Humor</span>
+        <span class="meta-pill"><span class="dot"></span> Creator: J. Germs</span>
+      </div>
+    </header>
+
+    <!-- Page body -->
+    <div class="page-body">
+
+      <!-- LOGLINE -->
+      <section class="section">
+        <h2 class="section-title">Logline</h2>
+        <blockquote class="logline">
+          <p>A young Black strategist from the South navigates the elite, contradictory world of America's most prestigious advertising agencies during the most turbulent era the industry has ever faced &mdash; from pandemic performativeness to AI apocalypse &mdash; transforming from wide-eyed outsider to the one who disrupts it all.</p>
+        </blockquote>
+      </section>
+
+      <!-- PREMISE -->
+      <section class="section">
+        <h2 class="section-title">Premise</h2>
+        <div class="content">
+          <p><strong>The disruption of the advertising industry, post-2020, from the outside in.</strong></p>
+          <p>Three agencies. Three cities. One protagonist who enters advertising at the exact moment the industry begins eating itself &mdash; and slowly learns to use that chaos as a weapon.</p>
+          <p>The show follows our protagonist through three distinct agency eras (<strong>San Francisco &rarr; Portland &rarr; Los Angeles</strong>), each representing a different face of the same broken system. What begins as a fish-out-of-water story about a Southern kid in a sophisticated coastal industry becomes something much larger: a story about <em>who gets to tell the stories that shape culture</em>, who profits from them, and what happens when the old guard's con finally runs out of road.</p>
+        </div>
+      </section>
+
+      <!-- COMPARABLE SHOWS -->
+      <section class="section">
+        <h2 class="section-title">Comparable Shows</h2>
+        <div class="comp-card-grid">
+
+          <!-- Mad Men -->
+          <div class="comp-card">
+            <div class="comp-card-eyebrow">Comp 01</div>
+            <h3>Mad Men</h3>
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Share</div>
+              <p>Advertising setting, character depth, sweeping industry changes, period piece quality, intersection of work and life.</p>
+            </div>
+            <hr class="comp-divider">
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Do Differently</div>
+              <p>Contemporary. Diverse perspective at center. The industry is declining, not ascending.</p>
+            </div>
+          </div>
+
+          <!-- Atlanta -->
+          <div class="comp-card">
+            <div class="comp-card-eyebrow">Comp 02</div>
+            <h3>Atlanta <span style="font-weight: 400; color: var(--text-muted); font-size: 14px;">(S2&ndash;S3)</span></h3>
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Share</div>
+              <p>Half-hour format, tonal range, standalone episodes building something bigger, Black perspective, surreal touches.</p>
+            </div>
+            <hr class="comp-divider">
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Do Differently</div>
+              <p>Workplace-centered. More serialized.</p>
+            </div>
+          </div>
+
+          <!-- Silicon Valley -->
+          <div class="comp-card">
+            <div class="comp-card-eyebrow">Comp 03</div>
+            <h3>Silicon Valley</h3>
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Share</div>
+              <p>Comedic tone grounded in real experiences, insider knowledge, IYKYK humor.</p>
+            </div>
+            <hr class="comp-divider">
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Do Differently</div>
+              <p>More dramatic weight. Race is central. Higher emotional stakes.</p>
+            </div>
+          </div>
+
+          <!-- Industry -->
+          <div class="comp-card">
+            <div class="comp-card-eyebrow">Comp 04</div>
+            <h3>Industry</h3>
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Share</div>
+              <p>Serious and salacious tone, underdog-to-power-player arc, killer soundtrack.</p>
+            </div>
+            <hr class="comp-divider">
+            <div class="comp-detail">
+              <div class="comp-detail-label">What We Do Differently</div>
+              <p>American. Advertising, not finance. More comedic range.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FORMAT & STRUCTURE -->
+      <section class="section">
+        <h2 class="section-title">Format &amp; Structure</h2>
+        <ul class="format-list">
+          <li>
+            <span class="format-key">Episode Length</span>
+            ~30 minutes
+          </li>
+          <li>
+            <span class="format-key">Episode Style</span>
+            Hybrid &mdash; standalone thematically, builds season arcs
+          </li>
+          <li>
+            <span class="format-key">Tonal Range</span>
+            Some comedic, some dramatic, some surreal / experimental
+          </li>
+          <li>
+            <span class="format-key">Timeline</span>
+            Season = agency era, with non-linear jumps
+          </li>
+          <li>
+            <span class="format-key">POV</span>
+            Primarily protagonist, ensemble with multiple POV episodes
+          </li>
+        </ul>
+      </section>
+
+      <!-- THE AI THREAD -->
+      <section class="section">
+        <h2 class="section-title">The AI Thread</h2>
+        <div class="content" style="margin-bottom: 20px;">
+          <p>AI runs as a slow-burn background current through the entire series &mdash; nearly invisible at first, then increasingly present, until it becomes the protagonist's primary weapon.</p>
+        </div>
+        <div class="ai-timeline">
+
+          <div class="ai-phase">
+            <div class="ai-phase-num">Early Seasons</div>
+            <h4>Virtually Invisible</h4>
+            <p>Hidden Easter eggs. Someone leaves to start a company. An unexplained layoff. Planted deliberately for rewatchers.</p>
+            <div class="ai-phase-bar"></div>
+          </div>
+
+          <div class="ai-phase">
+            <div class="ai-phase-num">Middle Seasons</div>
+            <h4>A Curiosity</h4>
+            <p>ChatGPT arrives (Nov 2022). Characters start using it. Treated as a novelty &mdash; not yet a threat.</p>
+            <div class="ai-phase-bar"></div>
+          </div>
+
+          <div class="ai-phase">
+            <div class="ai-phase-num">Later Seasons</div>
+            <h4>~80% Intensity</h4>
+            <p>AI everywhere. Omnicom merger. Industry consolidation. The old way visibly dying. Anxiety spikes.</p>
+            <div class="ai-phase-bar"></div>
+          </div>
+
+          <div class="ai-phase">
+            <div class="ai-phase-num">Climax</div>
+            <h4>The Catalyst</h4>
+            <p>Protagonist weaponizes the disruption &mdash; using AI as the tool to dismantle the system from within.</p>
+            <div class="ai-phase-bar"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PLAYLIST / SONIC MOOD BOARD -->
+      <section class="section">
+        <h2 class="section-title">Playlist / Sonic Mood Board</h2>
+        <div class="content" style="margin-bottom: 12px;">
+          <p>The sonic world of the show &mdash; the tracks that capture the ambition, defiance, and intelligence at the center of it.</p>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Track</th>
+              <th>Artist</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="track-title">Run It Up</td>
+              <td class="track-artist">Tyler, The Creator</td>
+              <td class="track-why">Ambition, irreverence, making your own lane</td>
+            </tr>
+            <tr>
+              <td class="track-title">New Slaves</td>
+              <td class="track-artist">Kanye West</td>
+              <td class="track-why">Systemic exploitation, defiance</td>
+            </tr>
+            <tr>
+              <td class="track-title">Story of OJ</td>
+              <td class="track-artist">Jay-Z</td>
+              <td class="track-why">Race and money, generational patterns</td>
+            </tr>
+            <tr>
+              <td class="track-title">Legacy</td>
+              <td class="track-artist">Jay-Z</td>
+              <td class="track-why">Building something that lasts</td>
+            </tr>
+            <tr>
+              <td class="track-title">Organic Dreams</td>
+              <td class="track-artist">Larry June</td>
+              <td class="track-why">West Coast ambition, smooth hustle</td>
+            </tr>
+            <tr>
+              <td class="track-title">Count Up That Loot</td>
+              <td class="track-artist">Nipsey Hussle</td>
+              <td class="track-why">Grinding with purpose</td>
+            </tr>
+            <tr>
+              <td class="track-title">Break My Soul</td>
+              <td class="track-artist">Beyonc&eacute;</td>
+              <td class="track-why">Quitting the system, self-liberation</td>
+            </tr>
+            <tr>
+              <td class="track-title">Man at the Garden</td>
+              <td class="track-artist">Kendrick Lamar</td>
+              <td class="track-why">Standing alone at the top</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- STATUS -->
+      <section class="section">
+        <h2 class="section-title">Status</h2>
+        <div class="status-grid">
+          <ul class="checklist status-list">
+            <li class="done">Premise established</li>
+            <li class="done">Format decided</li>
+            <li class="done">Tone defined</li>
+            <li class="done">Comps identified</li>
+            <li class="done">Protagonist arc defined</li>
+          </ul>
+          <ul class="checklist status-list">
+            <li>Characters detailed</li>
+            <li>Season arcs broken down</li>
+            <li>Pilot outlined</li>
+            <li>Episode structures established</li>
+            <li>Fictionalized names decided</li>
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /.page-body -->
+
+  </main><!-- /.main-content -->
+
+  <script>
+    // Mobile sidebar toggle
+    const toggle = document.getElementById('mobileToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    toggle.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+      const isOpen = sidebar.classList.contains('open');
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      toggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+    });
+
+    // Close sidebar when nav link tapped on mobile
+    sidebar.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('open');
+          toggle.setAttribute('aria-label', 'Open navigation');
+          toggle.innerHTML = '&#9776;';
+        }
+      });
+    });
+
+    // Close sidebar on outside click (mobile)
+    document.addEventListener('click', function (e) {
+      if (
+        window.innerWidth <= 768 &&
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        e.target !== toggle
+      ) {
+        sidebar.classList.remove('open');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        toggle.innerHTML = '&#9776;';
+      }
+    });
+  </script>
+
+</body>
+</html>

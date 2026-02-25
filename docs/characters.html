@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characters - The Agency / Agency Series Bible</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Characters page-specific styles */
+
+    /* Protagonist featured card */
+    .protagonist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .protagonist-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.03));
+      pointer-events: none;
+    }
+
+    .protagonist-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+    }
+
+    .protagonist-name {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+
+    .protagonist-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .protagonist-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .protagonist-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-era-all {
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      color: var(--accent-gold);
+    }
+
+    .badge-role {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .protagonist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .protagonist-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .protagonist-block p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .protagonist-block p strong {
+      color: var(--text-primary);
+    }
+
+    .protagonist-block p em {
+      color: var(--accent-warm);
+      font-style: italic;
+    }
+
+    /* Arc timeline inside protagonist card */
+    .arc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .arc-item {
+      display: flex;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .arc-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .arc-season-tag {
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      padding: 3px 9px;
+      border-radius: 3px;
+      height: fit-content;
+      flex-shrink: 0;
+    }
+
+    .arc-s1 {
+      background: rgba(91, 143, 185, 0.12);
+      color: var(--accent-blue);
+    }
+
+    .arc-s2 {
+      background: rgba(155, 127, 212, 0.12);
+      color: var(--accent-purple);
+    }
+
+    .arc-s3 {
+      background: rgba(212, 149, 106, 0.12);
+      color: var(--accent-warm);
+    }
+
+    .arc-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      padding-top: 2px;
+    }
+
+    .arc-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .protagonist-inspiration {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(201, 168, 76, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-top: 24px;
+    }
+
+    .inspiration-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold-dim);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .inspiration-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* Ensemble table section */
+    .table-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    td.name-col {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    td.status-pending-cell {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    td.era-tbd {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .profile-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(154, 154, 154, 0.1);
+      color: var(--text-muted);
+    }
+
+    /* Roles needed card grid */
+    .role-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      transition: all var(--transition);
+    }
+
+    .role-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-light);
+      transform: translateY(-1px);
+    }
+
+    .role-number {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold-dim);
+      margin-bottom: 8px;
+    }
+
+    .role-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .role-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Status checklist section */
+    .status-checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .status-item.done {
+      color: var(--text-primary);
+      border-color: rgba(106, 191, 138, 0.2);
+      background: rgba(106, 191, 138, 0.04);
+    }
+
+    .status-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border-light);
+      border-radius: 3px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0;
+    }
+
+    .status-item.done .status-check {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+      color: var(--bg-primary);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Real industry figures table */
+    .industry-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .protagonist-grid { grid-template-columns: 1fr; }
+      .status-checklist-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .protagonist-card { padding: 24px 20px; }
+      .protagonist-name { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>THE AGENCY</h1>
+      <div class="subtitle">Series Bible Development</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
+      <div class="nav-section">Series Bible</div>
+      <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+      <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+      <a href="characters.html" class="nav-link active"><span class="icon">&#9671;</span> Characters</a>
+      <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+      <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+      <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+      <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+      <div class="nav-section">Resources</div>
+      <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+      <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+      <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="page-header">
+      <h1>Characters</h1>
+      <div class="description">The people who populate the world of The Agency</div>
+    </div>
+
+    <div class="page-body">
+
+      <!-- PROTAGONIST -->
+      <section class="section" id="protagonist">
+        <div class="section-title">Protagonist</div>
+
+        <div class="protagonist-card">
+          <div class="protagonist-eyebrow">Lead / POV Character</div>
+          <div class="protagonist-name">[Name TBD] &mdash; Fictionalized Creator</div>
+          <div class="protagonist-subtitle">The outsider who becomes the one who sees everything</div>
+
+          <div class="protagonist-meta-row">
+            <span class="protagonist-badge badge-era-all">&#9670; All Three Eras &mdash; GSP &rarr; W+K &rarr; TBWA</span>
+            <span class="protagonist-badge badge-role">Lead / POV Character</span>
+            <span class="protagonist-badge badge-role">Archetype: The Outsider-Disruptor</span>
+          </div>
+
+          <div class="protagonist-grid">
+
+            <div class="protagonist-block">
+              <h4>Who They Are</h4>
+              <p>A young Black strategist from the South who enters the advertising industry in 2020 through MAIP, right as the world breaks open. Smart, observant, ambitious &mdash; but fundamentally <em>an outsider in every room they enter</em>. They see things others miss because they were never fully let inside.</p>
+            </div>
+
+            <div class="protagonist-block">
+              <h4>What Drives Them</h4>
+              <p><strong>Understanding the system.</strong> Then mastering it. Then disrupting it.</p>
+
+              <h4 style="margin-top: 20px;">Their Contradiction</h4>
+              <p>They&rsquo;re critical of the industry&rsquo;s bullshit but also drawn to it. They want to <em>succeed in a system they know is broken</em>.</p>
+            </div>
+
+          </div>
+
+          <div class="protagonist-block" style="margin-bottom: 20px;">
+            <h4>Arc by Season</h4>
+            <ul class="arc-list">
+              <li class="arc-item">
+                <span class="arc-season-tag arc-s1">Season 1 &mdash; GSP</span>
+                <div class="arc-text"><strong>Eyes wide open.</strong> Absorbing everything. Learning the language. Seeing the contradictions but not yet knowing what to do with them.</div>
+              </li>
+              <li class="arc-item">
+                <span class="arc-season-tag arc-s2">Season 2 &mdash; W+K</span>
+                <div class="arc-text"><strong>Going deeper.</strong> Buying in &mdash; or trying to. First time truly inside. The high of belonging and the devastation of being discarded.</div>
+              </li>
+              <li class="arc-item">
+                <span class="arc-season-tag arc-s3">Season 3+ &mdash; TBWA / Beyond</span>
+                <div class="arc-text"><strong>Clarity. Strategy.</strong> Using everything they&rsquo;ve learned &mdash; including AI &mdash; as a catalyst to build something new.</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="protagonist-inspiration">
+            <span class="inspiration-label">Inspired By</span>
+            <span class="inspiration-text">Fictionalized version of the creator. Core experiences are autobiographical; character has room to diverge as the story demands.</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ENSEMBLE -->
+      <section class="section" id="ensemble">
+        <div class="section-title">Ensemble Cast &mdash; Named Characters</div>
+
+        <p class="table-note">25 named characters identified. Profiles pending. Era assignments and character details to be determined in upcoming development sessions.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Notes</th>
+              <th>Agency Era</th>
+              <th>Profile Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="status-pending-cell">01</td>
+              <td class="name-col">Leslie B</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">02</td>
+              <td class="name-col">Jason</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">03</td>
+              <td class="name-col">Christine</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">04</td>
+              <td class="name-col">Sarah</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">05</td>
+              <td class="name-col">Tony</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">06</td>
+              <td class="name-col">Jeff</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">07</td>
+              <td class="name-col">Grace</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">08</td>
+              <td class="name-col">Kaleb</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">09</td>
+              <td class="name-col">Corey</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">10</td>
+              <td class="name-col">Taranee</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">11</td>
+              <td class="name-col">Kieran</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">12</td>
+              <td class="name-col">Myles</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">13</td>
+              <td class="name-col">Janel</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">14</td>
+              <td class="name-col">Briana</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">15</td>
+              <td class="name-col">Lyricee</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">16</td>
+              <td class="name-col">Rich</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">17</td>
+              <td class="name-col">Sharcina</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">18</td>
+              <td class="name-col">Taij</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">19</td>
+              <td class="name-col">Alia T</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">20</td>
+              <td class="name-col">Ezana</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">21</td>
+              <td class="name-col">JV + Lauren</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">22</td>
+              <td class="name-col">Jared</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">23</td>
+              <td class="name-col">Judy</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">24</td>
+              <td class="name-col">Eneda</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="status-pending-cell">25</td>
+              <td class="name-col">Maddy</td>
+              <td class="status-pending-cell">&mdash;</td>
+              <td class="era-tbd">TBD</td>
+              <td><span class="profile-badge">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- REAL INDUSTRY FIGURES -->
+      <section class="section" id="industry-figures">
+        <div class="section-title">Real Industry Figures</div>
+
+        <p class="industry-note">Listed as resources and reference points. Fictionalization approach and legal strategy to be determined.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name-col">Dez Marzette</td>
+              <td class="status-pending-cell">Industry connection</td>
+              <td class="status-pending-cell">Listed as a resource</td>
+            </tr>
+            <tr>
+              <td class="name-col">Jeff Goodby</td>
+              <td class="status-pending-cell">Co-founder of GSP</td>
+              <td class="status-pending-cell">Listed as a resource</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- CHARACTER ROLES NEEDED -->
+      <section class="section" id="roles-needed">
+        <div class="section-title">Character Roles Needed</div>
+
+        <p class="table-note" style="margin-bottom: 20px;">Narrative functions the ensemble must fill. Not yet assigned to named characters.</p>
+
+        <div class="card-grid">
+
+          <div class="role-card">
+            <div class="role-number">Role 01</div>
+            <div class="role-name">The Mentor</div>
+            <p class="role-desc">Shows the protagonist the ropes, then later reveals their own compromises. The cost of longevity in a broken system.</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 02</div>
+            <div class="role-name">The Rival</div>
+            <p class="role-desc">Competing for the same space, possibly from a different background. Pushes the protagonist to define what they actually want.</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 03</div>
+            <div class="role-name">The Mirror</div>
+            <p class="role-desc">Reflects what the protagonist could become &mdash; better or worse. A living answer to the question: what does this place do to you?</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 04</div>
+            <div class="role-name">The Love Interest</div>
+            <p class="role-desc">A romantic relationship that complicates the work dynamics. Blurs the already-thin line between professional and personal.</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 05</div>
+            <div class="role-name">The Insider</div>
+            <p class="role-desc">Has been in the industry forever. Either part of the problem, or exhausted by it &mdash; maybe both. Carries institutional memory.</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 06</div>
+            <div class="role-name">The Fellow Outsider</div>
+            <p class="role-desc">Another MAIP connection or POC navigating the same spaces. A collaborator, confidant, or cautionary tale &mdash; depending on the season.</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 07</div>
+            <div class="role-name">The True Believer</div>
+            <p class="role-desc">Genuinely drinks the agency Kool-Aid. No irony, no distance. Makes the protagonist &mdash; and the audience &mdash; question their own cynicism.</p>
+          </div>
+
+          <div class="role-card">
+            <div class="role-number">Role 08</div>
+            <div class="role-name">The Casualty</div>
+            <p class="role-desc">Someone the industry chews up and spits out. A reminder of what&rsquo;s at stake. The cost of the game, made visible.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- STATUS CHECKLIST -->
+      <section class="section" id="status">
+        <div class="section-title">Character Development Status</div>
+
+        <div class="status-checklist-grid">
+
+          <div class="status-item done">
+            <div class="status-check">&#10003;</div>
+            <span>Protagonist arc established</span>
+          </div>
+
+          <div class="status-item">
+            <div class="status-check"></div>
+            <span>Protagonist named</span>
+          </div>
+
+          <div class="status-item">
+            <div class="status-check"></div>
+            <span>Top 5&ndash;10 characters profiled</span>
+          </div>
+
+          <div class="status-item">
+            <div class="status-check"></div>
+            <span>Character relationship map</span>
+          </div>
+
+          <div class="status-item">
+            <div class="status-check"></div>
+            <span>Characters assigned to agency eras</span>
+          </div>
+
+          <div class="status-item">
+            <div class="status-check"></div>
+            <span>MAIP cohort characters identified</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.page-body -->
+
+    <footer style="padding: 24px 48px; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-muted);">
+      <span><span style="font-weight: 600; color: var(--accent-gold); letter-spacing: 0.5px;">THE AGENCY / AGENCY</span> &mdash; Series Bible Development</span>
+      <span>Creator: J. Germs &nbsp;&middot;&nbsp; Active since Feb 22, 2026</span>
+    </footer>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Themes - The Agency / Agency Series Bible</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Themes page — local overrides */
+
+    .theme-box {
+      margin-bottom: 20px;
+    }
+
+    .theme-box-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .theme-box-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-gold-dim);
+      letter-spacing: 1px;
+      min-width: 28px;
+    }
+
+    .theme-box h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 0;
+    }
+
+    .theme-box-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+      padding-top: 8px;
+    }
+
+    .theme-field-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .theme-field-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .theme-key-question {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+      margin-top: 2px;
+    }
+
+    .theme-key-question em {
+      color: var(--accent-warm);
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    /* Throughlines table — highlight cells */
+    .peak {
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .tested {
+      color: var(--accent-purple);
+      font-weight: 700;
+    }
+
+    /* Status section */
+    .status-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px 24px;
+    }
+
+    .status-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Responsive: stack theme-box-body on small screens */
+    @media (max-width: 700px) {
+      .theme-box-body {
+        grid-template-columns: 1fr;
+      }
+      .theme-key-question {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile toggle -->
+  <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>THE AGENCY</h1>
+      <div class="subtitle">Series Bible Development</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
+      <div class="nav-section">Series Bible</div>
+      <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+      <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+      <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+      <a href="themes.html" class="nav-link active"><span class="icon">&#9670;</span> Themes</a>
+      <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+      <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+      <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+      <div class="nav-section">Resources</div>
+      <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+      <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+      <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <h1>Themes</h1>
+      <div class="description">The Agency operates on multiple thematic layers simultaneously. Themes flex in prominence by episode and season.</div>
+    </div>
+
+    <div class="page-body">
+
+      <!-- ============================================================
+           SECTION: Core Themes
+      ============================================================ -->
+      <section class="section" id="core-themes">
+        <div class="section-title">Core Themes</div>
+
+        <!-- Theme 01 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">01</span>
+            <h4>Cognitive Dissonance</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">The gap between what agencies say and what they do. "We value diversity" while the only Black junior strategist never gets promoted. "We're a family" while laying people off by Zoom.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">Every agency era has its own version. GSP is performative diversity. W+K is cult mythology vs. corporate reality. TBWA is "disruption" philosophy vs. merger machine.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>How long can you participate in a system you know is lying?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 02 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">02</span>
+            <h4>Cult-Like Buy-In (Or Opt Out)</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">Agencies don't just want employees; they want believers. Total buy-in — identity, time, creativity, loyalty. The alternative is exile.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">Most visible at W+K. "Just Do It" isn't just a tagline; it's a way of life. But what happens when the cult doesn't want you anymore?</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>What does it cost to belong? What does it cost to refuse?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 03 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">03</span>
+            <h4>A Looming Apocalypse</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">The advertising industry as we know it is ending. AI, consolidation, cultural shifts. The old guard doesn't see it coming.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">AI as slow-burn Easter eggs leading to a crescendo. Merger rumblings. Layoffs. Something massive coming but nobody talking about it.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>When you see the end coming, do you run, hide, or build?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 04 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">04</span>
+            <h4>Cultural + Societal Shifts</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">2020s unprecedented upheaval — pandemic, BLM, polarization, generational conflict, remote work revolution. The ad industry claims to reflect culture but is always behind it.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">Each season is marked by real cultural moments. The show doesn't lecture — it shows how they ripple through workplaces and relationships.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>Can an industry that sells culture actually understand it?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 05 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">05</span>
+            <h4>Reclamation</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">Taking back what's been co-opted. Black culture, Southern identity, creative vision, personal agency.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">The protagonist's arc from being the "diverse hire" to changing the game on their own terms.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>How do you take back what was stolen without becoming what stole it?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 06 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">06</span>
+            <h4>First-Mover's Advantage</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">Who sees the future first? The protagonist's strategic mind — the ability to see patterns before others do.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">Chess/Go metaphors. A growing ability to read the room. AI as the ultimate first-mover test.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>What's the advantage worth if nobody listens until it's too late?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 07 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">07</span>
+            <h4>Performativeness</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">Theater of progressive values in corporate spaces. DEI as PR. Allyship that evaporates when inconvenient. An industry that runs entirely on performance.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">GSP during BLM. W+K's "creative culture." TBWA's "disruption." Every agency performs a version of itself for the world.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>In an industry built on selling images, is anything real?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 08 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">08</span>
+            <h4>Allyship vs. Alliance</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">The spectrum from fake solidarity to real partnership. Some perform allyship; others actually show up when it counts.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">The white creative who posts a black square but stays silent in the room. The unexpected ally who risks something real. The fellow POC who has been co-opted.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>How do you know who's really with you?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 09 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">09</span>
+            <h4>Creativity vs. Capitalism</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">The soul of advertising. Art or commerce? Can it be both? What gets sacrificed when the answer turns out to be no?</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">Great work killed for business reasons. Derivative work celebrated. The constant tension between what's meaningful and what's profitable.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>Can you make art inside a machine built to make money?</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme 10 -->
+        <div class="theme-box">
+          <div class="theme-box-header">
+            <span class="theme-box-num">10</span>
+            <h4>The Long Con</h4>
+          </div>
+          <div class="theme-box-body">
+            <div>
+              <div class="theme-field-label">What it means in the show</div>
+              <p class="theme-field-text">Multiple levels. The industry's con on its workers. The protagonist's long game of learning the system in order to disrupt it. The show itself as a long con.</p>
+            </div>
+            <div>
+              <div class="theme-field-label">How it manifests</div>
+              <p class="theme-field-text">Seeds planted in early episodes pay off seasons later. The protagonist's moves are only fully visible in retrospect.</p>
+            </div>
+            <div class="theme-key-question">
+              <div class="theme-field-label">Key question</div>
+              <em>Who's conning whom?</em>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============================================================
+           SECTION: Thematic Throughlines
+      ============================================================ -->
+      <section class="section" id="throughlines">
+        <div class="section-title">Thematic Throughlines by Season</div>
+
+        <div class="content">
+          <p>Themes do not carry equal weight across all seasons. Each era amplifies certain themes to their peak while others simmer beneath the surface, waiting for their moment.</p>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Theme</th>
+                <th>S1 &mdash; GSP (The Awakening)</th>
+                <th>S2 &mdash; W+K (The Cult)</th>
+                <th>S3+ &mdash; TBWA (The Reckoning)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cognitive Dissonance</strong></td>
+                <td><span class="peak">Peak</span> &mdash; protagonist sees it everywhere</td>
+                <td>Present but internalized</td>
+                <td>Protagonist uses it strategically</td>
+              </tr>
+              <tr>
+                <td><strong>Cult Buy-In</strong></td>
+                <td>Observing from outside (remote)</td>
+                <td><span class="peak">Peak</span> &mdash; fully immersed</td>
+                <td>Detached, analytical</td>
+              </tr>
+              <tr>
+                <td><strong>Looming Apocalypse</strong></td>
+                <td>Easter eggs only</td>
+                <td>First tremors</td>
+                <td><span class="peak">Peak</span> &mdash; AI crescendo</td>
+              </tr>
+              <tr>
+                <td><strong>Cultural Shifts</strong></td>
+                <td>BLM, Covid as backdrop</td>
+                <td>Post-peak, fatigue</td>
+                <td>New normal, what's next</td>
+              </tr>
+              <tr>
+                <td><strong>Reclamation</strong></td>
+                <td>Protagonist's culture commodified</td>
+                <td>Tries to reclaim within system</td>
+                <td><span class="peak">Peak</span> &mdash; builds own thing</td>
+              </tr>
+              <tr>
+                <td><strong>First-Mover</strong></td>
+                <td>Learning to see patterns</td>
+                <td>Applying strategic thinking</td>
+                <td><span class="peak">Peak</span> &mdash; making the move</td>
+              </tr>
+              <tr>
+                <td><strong>Performativeness</strong></td>
+                <td><span class="peak">Peak</span> &mdash; DEI theater</td>
+                <td>Cult performance</td>
+                <td>Corporate performance, sees through it</td>
+              </tr>
+              <tr>
+                <td><strong>Allyship vs. Alliance</strong></td>
+                <td>Learning who's real</td>
+                <td><span class="tested">Tested</span> &mdash; who shows up when laid off?</td>
+                <td>Building real alliances</td>
+              </tr>
+              <tr>
+                <td><strong>Creativity vs. Capitalism</strong></td>
+                <td>Idealistic, believes in the work</td>
+                <td>Sees the tension clearly</td>
+                <td>Finds a third path</td>
+              </tr>
+              <tr>
+                <td><strong>The Long Con</strong></td>
+                <td>Being conned</td>
+                <td>Starting to see the con</td>
+                <td><span class="peak">Peak</span> &mdash; running the con</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: Status
+      ============================================================ -->
+      <section class="section" id="status">
+        <div class="section-title">Status</div>
+
+        <div class="status-section">
+          <div class="status-section-title">Themes Development Checklist</div>
+          <ul class="checklist content">
+            <li class="done">Ten core themes defined</li>
+            <li class="done">Thematic throughlines by season mapped</li>
+            <li>Episode-level thematic assignments</li>
+            <li>Theme-character connections mapped</li>
+            <li>Specific scenes/moments for each theme</li>
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /.page-body -->
+
+  </main><!-- /.main-content -->
+
+  <script>
+    // Mobile sidebar toggle — close on outside click
+    document.addEventListener('click', function (e) {
+      var sidebar = document.querySelector('.sidebar');
+      var toggle = document.querySelector('.mobile-toggle');
+      if (
+        window.innerWidth <= 768 &&
+        sidebar.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        e.target !== toggle
+      ) {
+        sidebar.classList.remove('open');
+      }
+    });
+
+    // Close sidebar when a nav link is tapped on mobile
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.sidebar').classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
