@@ -24,7 +24,7 @@
                 <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
                 <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
                 <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
-                <a href="pilot.html" class="nav-link"><span class="icon">&#9654;</span> Pilot</a>
+                <a href="episodes.html" class="nav-link"><span class="icon">&#9654;</span> Episodes</a>
                 <div class="nav-section">Resources</div>
                 <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
                 <a href="references.html" class="nav-link active"><span class="icon">&#9898;</span> References</a>
@@ -266,11 +266,11 @@
                 <div class="research-tasks">
                     <h3>Research To Do</h3>
                     <ul class="task-list">
-                        <li><input type="checkbox" disabled> Watch/rewatch key episodes from each comp for structural analysis</li>
-                        <li><input type="checkbox" disabled> Map pilot episodes of each comp — how they introduce their worlds</li>
-                        <li><input type="checkbox" disabled> Analyze how each show handles its industry insider knowledge</li>
-                        <li><input type="checkbox" disabled> Study Atlanta's episode structure for the standalone-within-serialized model</li>
-                        <li><input type="checkbox" disabled> Study Industry's soundtrack strategy</li>
+                        <li><input type="checkbox"> Watch/rewatch key episodes from each comp for structural analysis</li>
+                        <li><input type="checkbox"> Map pilot episodes of each comp — how they introduce their worlds</li>
+                        <li><input type="checkbox"> Analyze how each show handles its industry insider knowledge</li>
+                        <li><input type="checkbox"> Study Atlanta's episode structure for the standalone-within-serialized model</li>
+                        <li><input type="checkbox"> Study Industry's soundtrack strategy</li>
                     </ul>
                 </div>
             </section>
@@ -375,9 +375,9 @@
                         <h4>Season 1 — San Francisco / GSP (2020-2021)</h4>
                         <p class="season-mood"><strong>Mood:</strong> Isolation, observation, slow awakening, cognitive dissonance</p>
                         <ul>
-                            <li><input type="checkbox" disabled> Music that captures the loneliness of remote work during a pandemic</li>
-                            <li><input type="checkbox" disabled> Songs about seeing clearly while everyone else is performing</li>
-                            <li><input type="checkbox" disabled> The sound of 2020: protest music, pandemic music, the cultural moment</li>
+                            <li><input type="checkbox"> Music that captures the loneliness of remote work during a pandemic</li>
+                            <li><input type="checkbox"> Songs about seeing clearly while everyone else is performing</li>
+                            <li><input type="checkbox"> The sound of 2020: protest music, pandemic music, the cultural moment</li>
                         </ul>
                     </div>
 
@@ -385,9 +385,9 @@
                         <h4>Season 2 — Portland / W+K (2023-2024)</h4>
                         <p class="season-mood"><strong>Mood:</strong> Intensity, belonging and alienation, creative highs, the fall</p>
                         <ul>
-                            <li><input type="checkbox" disabled> Music that captures the cult energy — being swept up in something</li>
-                            <li><input type="checkbox" disabled> Portland/Pacific Northwest sonic texture</li>
-                            <li><input type="checkbox" disabled> The comedown: music for the layoff, the loss, the leaving</li>
+                            <li><input type="checkbox"> Music that captures the cult energy — being swept up in something</li>
+                            <li><input type="checkbox"> Portland/Pacific Northwest sonic texture</li>
+                            <li><input type="checkbox"> The comedown: music for the layoff, the loss, the leaving</li>
                         </ul>
                     </div>
 
@@ -395,9 +395,9 @@
                         <h4>Season 3 — Los Angeles / TBWA (2024-present)</h4>
                         <p class="season-mood"><strong>Mood:</strong> Clarity, strategy, accumulation, the calm before the move</p>
                         <ul>
-                            <li><input type="checkbox" disabled> LA sound — West Coast, ambient, strategic</li>
-                            <li><input type="checkbox" disabled> Music that captures quiet confidence</li>
-                            <li><input type="checkbox" disabled> The build to something bigger</li>
+                            <li><input type="checkbox"> LA sound — West Coast, ambient, strategic</li>
+                            <li><input type="checkbox"> Music that captures quiet confidence</li>
+                            <li><input type="checkbox"> The build to something bigger</li>
                         </ul>
                     </div>
                 </div>
@@ -406,12 +406,12 @@
                 <div class="music-strategy">
                     <h3>Music Strategy (To Be Decided)</h3>
                     <ul class="task-list">
-                        <li><input type="checkbox" disabled> Needle-drop heavy vs. original score vs. hybrid</li>
-                        <li><input type="checkbox" disabled> Budget implications of licensed music</li>
-                        <li><input type="checkbox" disabled> Diegetic vs. non-diegetic usage</li>
-                        <li><input type="checkbox" disabled> Does the protagonist have a personal relationship with music?</li>
-                        <li><input type="checkbox" disabled> Music as a character (Industry model)?</li>
-                        <li><input type="checkbox" disabled> Era-authentic music (songs from the actual year of each season)?</li>
+                        <li><input type="checkbox"> Needle-drop heavy vs. original score vs. hybrid</li>
+                        <li><input type="checkbox"> Budget implications of licensed music</li>
+                        <li><input type="checkbox"> Diegetic vs. non-diegetic usage</li>
+                        <li><input type="checkbox"> Does the protagonist have a personal relationship with music?</li>
+                        <li><input type="checkbox"> Music as a character (Industry model)?</li>
+                        <li><input type="checkbox"> Era-authentic music (songs from the actual year of each season)?</li>
                     </ul>
                 </div>
             </section>
@@ -435,34 +435,35 @@
         }
 
         .comp-card {
-            border: 1px solid var(--border-color, #e0e0e0);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            background: var(--bg-white, #fff);
+            background: var(--bg-card);
             padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .comp-card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-gold-dim);
         }
 
         .comp-header {
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-color, #2c3e50);
+            border-bottom: 2px solid var(--accent-gold);
             padding-bottom: 1rem;
         }
 
         .comp-header h3 {
             margin: 0 0 0.5rem 0;
             font-size: 1.5rem;
-            color: var(--text-dark, #333);
+            color: var(--text-primary);
         }
 
         .comp-meta {
             display: inline-block;
             font-size: 0.9rem;
-            color: var(--text-light, #666);
+            color: var(--text-secondary);
             font-style: italic;
         }
 
@@ -470,7 +471,7 @@
         .comp-setting {
             margin: 0.5rem 0;
             font-size: 0.95rem;
-            color: var(--text-light, #666);
+            color: var(--text-secondary);
         }
 
         .comp-subsection {
@@ -480,7 +481,7 @@
         .comp-subsection h4 {
             margin: 1rem 0 0.75rem 0;
             font-size: 1rem;
-            color: var(--text-dark, #333);
+            color: var(--accent-gold);
             font-weight: 600;
         }
 
@@ -493,14 +494,15 @@
         .comp-subsection li {
             margin-bottom: 0.5rem;
             line-height: 1.6;
-            color: var(--text-dark, #333);
+            color: var(--text-secondary);
         }
 
         /* Secondary Comps Table */
         .secondary-comps {
             margin: 3rem 0;
             padding: 1.5rem;
-            background: var(--bg-light, #f5f5f5);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
         }
 
@@ -518,17 +520,24 @@
         .comps-table td {
             padding: 0.75rem;
             text-align: left;
-            border-bottom: 1px solid var(--border-color, #e0e0e0);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .comps-table th {
-            background-color: var(--accent-color, #2c3e50);
-            color: white;
+            background-color: var(--bg-secondary);
+            color: var(--accent-gold);
             font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comps-table td {
+            color: var(--text-secondary);
         }
 
         .comps-table tr:hover {
-            background-color: rgba(44, 62, 80, 0.05);
+            background-color: rgba(201, 168, 76, 0.03);
         }
 
         /* Playlist Styling */
@@ -543,7 +552,7 @@
 
         .subsection-description {
             margin-bottom: 1.5rem;
-            color: var(--text-light, #666);
+            color: var(--text-secondary);
             font-style: italic;
         }
 
@@ -555,29 +564,32 @@
         .playlist-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            background: var(--bg-card);
         }
 
         .playlist-table th,
         .playlist-table td {
             padding: 0.75rem;
             text-align: left;
-            border-bottom: 1px solid var(--border-color, #e0e0e0);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .playlist-table th {
-            background-color: var(--accent-color, #2c3e50);
-            color: white;
+            background-color: var(--bg-secondary);
+            color: var(--accent-gold);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .playlist-table td {
             font-size: 0.95rem;
+            color: var(--text-secondary);
         }
 
         .playlist-table tr:hover {
-            background-color: rgba(44, 62, 80, 0.05);
+            background-color: rgba(201, 168, 76, 0.03);
         }
 
         /* Season Playlists */
@@ -588,20 +600,20 @@
         .season-playlist {
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            background: var(--bg-light, #f9f9f9);
-            border-left: 4px solid var(--accent-color, #2c3e50);
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-gold);
             border-radius: 4px;
         }
 
         .season-playlist h4 {
             margin: 0 0 0.5rem 0;
-            color: var(--text-dark, #333);
+            color: var(--text-primary);
         }
 
         .season-mood {
             margin: 0.5rem 0 1rem 0;
             font-size: 0.95rem;
-            color: var(--text-light, #666);
+            color: var(--text-secondary);
         }
 
         .season-playlist ul {
@@ -618,13 +630,14 @@
         .season-playlist input[type="checkbox"] {
             margin-right: 0.75rem;
             margin-top: 0.25rem;
-            cursor: not-allowed;
+            cursor: pointer;
         }
 
         /* Music Strategy */
         .music-strategy {
             padding: 1.5rem;
-            background: var(--bg-light, #f5f5f5);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             margin: 2rem 0;
         }
@@ -643,19 +656,20 @@
             margin-bottom: 0.75rem;
             display: flex;
             align-items: flex-start;
-            color: var(--text-dark, #333);
+            color: var(--text-secondary);
         }
 
         .task-list input[type="checkbox"] {
             margin-right: 0.75rem;
             margin-top: 0.25rem;
-            cursor: not-allowed;
+            cursor: pointer;
         }
 
         /* Research Tasks */
         .research-tasks {
             padding: 1.5rem;
-            background: var(--bg-light, #f5f5f5);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             margin: 2rem 0;
         }
@@ -668,9 +682,10 @@
         .quick-links {
             margin-top: 3rem;
             padding: 1.5rem;
-            background: var(--bg-light, #f9f9f9);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            border-top: 2px solid var(--accent-color, #2c3e50);
+            border-top: 2px solid var(--accent-gold);
         }
 
         .quick-links h3 {
@@ -682,16 +697,18 @@
             margin-right: 1rem;
             margin-bottom: 0.75rem;
             padding: 0.5rem 1rem;
-            background: var(--accent-color, #2c3e50);
-            color: white;
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--accent-gold);
             text-decoration: none;
             border-radius: 4px;
             font-size: 0.95rem;
-            transition: background-color 0.3s ease;
+            border: 1px solid var(--accent-gold-dim);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .quick-link:hover {
-            background: rgba(44, 62, 80, 0.8);
+            background: rgba(201, 168, 76, 0.25);
+            border-color: var(--accent-gold);
         }
 
         /* Section Styling */
@@ -702,11 +719,11 @@
         .references-section h2 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: var(--text-dark, #333);
+            color: var(--text-primary);
         }
 
         .section-intro {
-            color: var(--text-light, #666);
+            color: var(--text-secondary);
             font-size: 1rem;
             margin-bottom: 2rem;
             line-height: 1.6;

@@ -101,3 +101,50 @@ Also mentioned: Dez Marzette, Jeff Goodby (as real industry figures / resources)
 - Returned to build out characters and stories via structured interview
 - Built site infrastructure (index.html, series-bible.html) for viewing the bible
 - Beginning character profiling from the 25+ named list
+
+---
+
+## Session 3 - 2026-02-26 - Site Launch, Deep Interview, Infrastructure
+
+### What Happened
+- Deployed full series bible site to GitHub Pages (docs/ folder)
+- Updated creator name from "J. Germs" to "Joshua German" across all pages
+- Built collapsible sidebar (expand/collapse on all screen sizes, persists via localStorage)
+- Added Spotify links to all playlist tracks (clickable, opens in Spotify)
+- Created 5 new Claude skills: update-site, brainstorm, scene-workshop, research-deep-dive, status-check
+- Conducted deep interview on protagonist, GSP promotion arc, W+K layoff, and MAIP's role
+- Built Episodes & Scripts section for comp show script reference
+- Fixed references/research page styling for dark theme readability
+
+### Key Decisions Made
+
+| Decision | Choice | Notes |
+|----------|--------|-------|
+| Protagonist reality level | 90% real | "It's me. Some scenarios changed, but it's me." |
+| MAIP's thematic role | Gift AND trap — central tension | Both opened the door and made him the token success story. Industry weaponizes the pipeline as proof of progress. |
+| GSP "never promoted" arc | Systemic goalpost-moving | Constant "you could do a little better" — placating. Thought it was personal, realized it was structural. Especially for strategy roles. |
+| W+K layoff emotional beat | Relief THEN rage | Was already done — journaling about wanting change 2 days before. Relief = freedom. Rage arrived later. |
+| W+K spell break | Multiple factors | (1) Seeing how much Kool-Aid others drank (2) "I don't base my personality off a workplace" (3) Being Black in Portland (4) The social silos — W+K people only hung out with W+K people |
+
+### New Story Beats Identified
+- **The Journal Entry**: Joshua was journaling about wanting out 1-2 days before the layoff. Told his girlfriend something was about to change. Then it happened. *Scene: S2 finale or closing beat.*
+- **Goalpost Scene(s)**: The repeated "you could do a little better" conversations at GSP. *Recurring motif through S1 — the audience sees the pattern before the protagonist does.*
+- **The Silos Episode**: W+K social world where everyone only associates with other W+K people. *Standalone episode concept.*
+- **MAIP Cold Open**: Getting the MAIP acceptance notification. The promise at the beginning. *Possible series cold open.*
+
+### Infrastructure Built
+- 5 new skills (.claude/skills/): update-site, brainstorm, scene-workshop, research-deep-dive, status-check
+- GitHub Pages site deployed from docs/
+- Collapsible sidebar across all pages
+- Spotify-linked playlist
+- Episodes & Scripts section with comp show script slots
+- Functional checkboxes throughout the site
+
+### Open Items for Next Session
+- [ ] Get the actual journal entry from 2 days before the layoff
+- [ ] Protagonist name (still open — the one big remaining character decision)
+- [ ] Detail the top 5-10 characters with full profiles
+- [ ] Capture the vaccination incident at GSP in full
+- [ ] Season 1 beat sheet (now that the GSP emotional engine is identified)
+- [ ] Source comp show scripts (Mad Men, Atlanta, Silicon Valley, Industry pilots)
+- [ ] TBWA era — need same depth of interview as GSP and W+K

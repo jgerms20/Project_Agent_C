@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Episodes &amp; Scripts | The Agency / Agency &mdash; Series Bible</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Episodes page-specific styles */
+
+    /* Script card grid */
+    .script-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .script-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 22px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all var(--transition);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .script-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-gold-dim);
+      transform: translateY(-2px);
+    }
+
+    .script-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .script-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .script-card .ep-info {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .script-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .script-card .card-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .status-pending {
+      background: rgba(154, 154, 154, 0.1);
+      color: var(--text-muted);
+    }
+
+    .status-active {
+      background: rgba(106, 191, 138, 0.12);
+      color: var(--accent-green);
+    }
+
+    /* Episode slot cards */
+    .episode-slot {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all var(--transition);
+    }
+
+    .episode-slot:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .episode-slot .ep-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-gold-dim);
+      min-width: 50px;
+      flex-shrink: 0;
+    }
+
+    .episode-slot .ep-title {
+      font-size: 14px;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .episode-slot .ep-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(154, 154, 154, 0.1);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .episode-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    /* Collapsed / coming soon sections */
+    .season-collapsed {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .season-collapsed h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .season-collapsed .coming-soon {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(154, 154, 154, 0.1);
+      color: var(--text-muted);
+    }
+
+    /* Comp show section headers */
+    .comp-show-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .comp-show-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .comp-show-header .comp-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .comp-show-section {
+      margin-bottom: 36px;
+    }
+
+    /* Section title consistent with other pages */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+
+    /* Research checklist */
+    .research-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .research-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .research-checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .research-checklist input[type="checkbox"] {
+      margin-top: 2px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Info callout */
+    .info-callout {
+      padding: 16px 20px;
+      background: rgba(201, 168, 76, 0.06);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 24px;
+    }
+
+    .info-callout p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .info-callout strong {
+      color: var(--accent-gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .script-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>THE AGENCY</h1>
+      <div class="subtitle">Series Bible Development</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">&#9670;</span> Dashboard</a>
+      <div class="nav-section">Series Bible</div>
+      <a href="overview.html" class="nav-link"><span class="icon">&#9678;</span> Overview</a>
+      <a href="world.html" class="nav-link"><span class="icon">&#9672;</span> World</a>
+      <a href="characters.html" class="nav-link"><span class="icon">&#9671;</span> Characters</a>
+      <a href="themes.html" class="nav-link"><span class="icon">&#9670;</span> Themes</a>
+      <a href="seasons.html" class="nav-link"><span class="icon">&#9655;</span> Season Arcs</a>
+      <a href="tone.html" class="nav-link"><span class="icon">&#9835;</span> Tone &amp; Style</a>
+      <a href="episodes.html" class="nav-link active"><span class="icon">&#9654;</span> Episodes</a>
+      <div class="nav-section">Resources</div>
+      <a href="research.html" class="nav-link"><span class="icon">&#9899;</span> Research</a>
+      <a href="references.html" class="nav-link"><span class="icon">&#9898;</span> References</a>
+      <a href="planning.html" class="nav-link"><span class="icon">&#9898;</span> Planning</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- Page header -->
+    <header class="page-header">
+      <h1>Episodes &amp; Scripts</h1>
+      <p class="description">Episode development, pilot outline, and comp show scripts for reference</p>
+    </header>
+
+    <!-- Page body -->
+    <div class="page-body">
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- A. PILOT EPISODE -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section class="section">
+        <h2 class="section-title">Pilot Episode</h2>
+
+        <div class="info-callout">
+          <p><strong>Status:</strong> The pilot is not yet developed. Character profiles and Season 1 beat sheet need to be locked before outlining begins. See the full pilot development page for prerequisites, opening choices, and tonal direction.</p>
+        </div>
+
+        <div class="script-grid">
+          <a href="pilot.html" class="script-card" data-episode="pilot">
+            <div class="script-card-label">The Agency / Agency</div>
+            <h3>Pilot Episode</h3>
+            <div class="ep-info">Season 1 &middot; Episode 1</div>
+            <p>The entry point into the series. Four opening choices under consideration. Prerequisites include character profiles (top 5-10), Season 1 key beats, cold open style, and narrative devices.</p>
+            <span class="card-status status-pending">Pending</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- B. SEASON EPISODES -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section class="section">
+        <h2 class="section-title">Season Episodes</h2>
+
+        <!-- Season 1 -->
+        <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px;">Season 1 &mdash; The Awakening <span style="font-weight: 400; color: var(--text-muted); font-size: 13px;">(GSP / San Francisco / 2020&ndash;2023)</span></h3>
+
+        <div class="episode-grid">
+          <div class="episode-slot">
+            <span class="ep-num">S1E01</span>
+            <span class="ep-title">Pilot &mdash; TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E02</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E03</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E04</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E05</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E06</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E07</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+          <div class="episode-slot">
+            <span class="ep-num">S1E08</span>
+            <span class="ep-title">TBD</span>
+            <span class="ep-status">Pending</span>
+          </div>
+        </div>
+
+        <!-- Season 2 - Collapsed -->
+        <div class="season-collapsed">
+          <h3>Season 2 &mdash; The Cult <span style="font-weight: 400; color: var(--text-muted); font-size: 13px;">(W+K / Portland / 2023&ndash;2024)</span></h3>
+          <span class="coming-soon">Coming Soon</span>
+        </div>
+
+        <!-- Season 3 - Collapsed -->
+        <div class="season-collapsed">
+          <h3>Season 3 &mdash; The Reckoning <span style="font-weight: 400; color: var(--text-muted); font-size: 13px;">(TBWA / Los Angeles / 2024&ndash;Present)</span></h3>
+          <span class="coming-soon">Coming Soon</span>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- C. COMP SHOW SCRIPTS -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section class="section">
+        <h2 class="section-title">Comp Show Scripts</h2>
+
+        <div class="info-callout" style="margin-bottom: 32px;">
+          <p><strong>Purpose:</strong> Studying the pilot episodes and key episodes of comparable shows to inform structure, pacing, and tonal approach for The Agency. Each show offers a different lesson in how to open a world, introduce an outsider protagonist, and balance comedy with drama.</p>
+        </div>
+
+        <!-- Mad Men -->
+        <div class="comp-show-section">
+          <div class="comp-show-header">
+            <h3>Mad Men</h3>
+            <span class="comp-meta">AMC &middot; 2007&ndash;2015 &middot; Matthew Weiner</span>
+          </div>
+          <div class="script-grid">
+            <a href="#" class="script-card" data-show="mad-men" data-script="pilot" onclick="return false;">
+              <div class="script-card-label">Pilot Script</div>
+              <h3>&ldquo;Smoke Gets in Your Eyes&rdquo;</h3>
+              <div class="ep-info">Season 1 &middot; Episode 1</div>
+              <p>The gold standard for advertising-world pilots. How Weiner introduces Don Draper, Sterling Cooper, and the seductive/destructive world of 1960s advertising in a single episode.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+            <a href="#" class="script-card" data-show="mad-men" data-script="the-wheel" onclick="return false;">
+              <div class="script-card-label">Key Episode</div>
+              <h3>&ldquo;The Wheel&rdquo;</h3>
+              <div class="ep-info">Season 1 &middot; Episode 13 (Finale)</div>
+              <p>The Kodak Carousel pitch. Peak intersection of advertising craft and emotional devastation. A masterclass in using the work to reveal the character.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Atlanta -->
+        <div class="comp-show-section">
+          <div class="comp-show-header">
+            <h3>Atlanta</h3>
+            <span class="comp-meta">FX &middot; 2016&ndash;2022 &middot; Donald Glover</span>
+          </div>
+          <div class="script-grid">
+            <a href="#" class="script-card" data-show="atlanta" data-script="pilot" onclick="return false;">
+              <div class="script-card-label">Pilot Script</div>
+              <h3>&ldquo;The Big Bang&rdquo;</h3>
+              <div class="ep-info">Season 1 &middot; Episode 1</div>
+              <p>How Glover introduces Earn, Paper Boi, and the surreal-yet-grounded world of Atlanta. The template for our half-hour hybrid format and tonal range.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+            <a href="#" class="script-card" data-show="atlanta" data-script="teddy-perkins" onclick="return false;">
+              <div class="script-card-label">Key Episode</div>
+              <h3>&ldquo;Teddy Perkins&rdquo;</h3>
+              <div class="ep-info">Season 2 &middot; Episode 6</div>
+              <p>The most daring standalone episode in the series. Proof that a half-hour show can go full horror, full art-house, and still serve the larger narrative. The ceiling for what our format can do.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Silicon Valley -->
+        <div class="comp-show-section">
+          <div class="comp-show-header">
+            <h3>Silicon Valley</h3>
+            <span class="comp-meta">HBO &middot; 2014&ndash;2019 &middot; Mike Judge</span>
+          </div>
+          <div class="script-grid">
+            <a href="#" class="script-card" data-show="silicon-valley" data-script="pilot" onclick="return false;">
+              <div class="script-card-label">Pilot Script</div>
+              <h3>&ldquo;Minimum Viable Product&rdquo;</h3>
+              <div class="ep-info">Season 1 &middot; Episode 1</div>
+              <p>How Judge translates deep industry insider knowledge into accessible comedy. The model for making IYKYK humor work for a broad audience while keeping the insiders nodding.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+            <a href="#" class="script-card" data-show="silicon-valley" data-script="two-days" onclick="return false;">
+              <div class="script-card-label">Key Episode</div>
+              <h3>&ldquo;Two Days of the Condor&rdquo;</h3>
+              <div class="ep-info">Season 2 &middot; Episode 10 (Finale)</div>
+              <p>The stakes reach a crescendo. Comedy and tension intertwined perfectly. A lesson in how to escalate real industry dynamics into gripping television without losing the humor.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Industry -->
+        <div class="comp-show-section">
+          <div class="comp-show-header">
+            <h3>Industry</h3>
+            <span class="comp-meta">HBO &middot; 2020&ndash;present &middot; Mickey Down, Konrad Kay</span>
+          </div>
+          <div class="script-grid">
+            <a href="#" class="script-card" data-show="industry" data-script="pilot" onclick="return false;">
+              <div class="script-card-label">Pilot Script</div>
+              <h3>&ldquo;Sesh&rdquo;</h3>
+              <div class="ep-info">Season 1 &middot; Episode 1</div>
+              <p>Opens with a death. Immediately establishes that corporate ambition has real consequences. The most tonally aggressive pilot of our comps. The template for making workplace drama feel dangerous.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+            <a href="#" class="script-card" data-show="industry" data-script="liverpool" onclick="return false;">
+              <div class="script-card-label">Key Episode</div>
+              <h3>&ldquo;Daddy&rdquo;</h3>
+              <div class="ep-info">Season 1 &middot; Episode 5</div>
+              <p>The episode where the power dynamics fully surface. Music, editing, and performance aligned to create atmosphere. A study in how sound design and pacing carry emotion in a workplace show.</p>
+              <span class="card-status status-pending">PDF pending &mdash; drop script here</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- D. SCRIPT RESOURCES -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section class="section">
+        <h2 class="section-title">Script Resources</h2>
+
+        <div class="info-callout" style="margin-bottom: 24px;">
+          <p><strong>Note:</strong> Pilot and episode scripts can be sourced from online script databases, studio archives, and screenwriting resources. Many pilot scripts for Emmy-nominated shows are publicly available during awards season. Check sites like Script Slug, The Script Lab, and studio FYC pages.</p>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px;">
+          <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px;">Research Tasks</h3>
+          <ul class="research-checklist">
+            <li>
+              <input type="checkbox" id="task-1">
+              <label for="task-1">Source Mad Men pilot script ("Smoke Gets in Your Eyes")</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-2">
+              <label for="task-2">Source Atlanta pilot script ("The Big Bang")</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-3">
+              <label for="task-3">Source Silicon Valley pilot script ("Minimum Viable Product")</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-4">
+              <label for="task-4">Source Industry pilot script ("Sesh")</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-5">
+              <label for="task-5">Analyze pilot structures: how each show introduces its world in the first 5 minutes</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-6">
+              <label for="task-6">Map cold open strategies across all four comp pilots</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-7">
+              <label for="task-7">Document how each pilot establishes its protagonist as insider/outsider</label>
+            </li>
+            <li>
+              <input type="checkbox" id="task-8">
+              <label for="task-8">Study act break patterns in half-hour pilots (Atlanta, Silicon Valley) vs. hour-long (Mad Men, Industry)</label>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /.page-body -->
+
+  </main><!-- /.main-content -->
+
+<script src="script.js"></script>
+</body>
+</html>

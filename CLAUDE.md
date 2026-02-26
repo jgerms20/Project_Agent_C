@@ -71,10 +71,15 @@ Advertising-Show/
 │   └── next-steps.md              # Current priorities
 └── .claude/
     └── skills/                    # Custom skills for common workflows
+        ├── brainstorm.md          # Structured interview/creative sessions
         ├── capture-idea.md
         ├── character-profile.md
         ├── episode-outline.md
+        ├── research-deep-dive.md  # Web research on agencies/culture
+        ├── scene-workshop.md      # Workshop individual scenes
         ├── session-review.md
+        ├── status-check.md        # Quick project dashboard
+        ├── update-site.md         # Sync content to GitHub Pages
         └── world-build.md
 ```
 
@@ -92,10 +97,14 @@ Advertising-Show/
 - [x] AI thread: Slow burn Easter eggs → crescendo → protagonist catalyst
 - [x] Race: Central/interwoven/subtext simultaneously, flexes by episode
 - [x] Protagonist: Fictionalized creator as lead, ensemble POVs
+- [x] Protagonist reality level: 90% real (Session 3 — "It's me. Some scenarios changed, but it's me.")
+- [x] MAIP: Both gift AND trap — central tension (opened the door + made him the token success story)
+- [x] GSP "never promoted": Systemic goalpost-moving, not personal failure
+- [x] W+K layoff: Relief then rage (was already done before they fired him)
+- [x] W+K spell break: Kool-Aid drinkers + outsider identity + Portland + social silos
 
 ### Open Decisions
 - [ ] Character details (25+ named, need to flesh out top 5-10)
-- [ ] MAIP's full role in the narrative (connective tissue + more)
 - [ ] Fictionalized agency names
 - [ ] Fictionalized character names and how closely they map to real people
 - [ ] Specific season breakdowns (which eras get multiple seasons)
@@ -103,6 +112,8 @@ Advertising-Show/
 - [ ] Whether the show is set "in the past" (period piece) or told in present
 - [ ] The protagonist's name
 - [ ] Legal strategy for real people/places
+- [ ] TBWA era — needs same interview depth as GSP and W+K
+- [ ] The vaccination incident at GSP — full story still needed
 
 ---
 

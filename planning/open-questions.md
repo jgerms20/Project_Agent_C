@@ -27,13 +27,14 @@ Questions that need to be resolved to advance the series bible. Prioritized by i
 ## Medium Priority (Enriches the Bible)
 
 ### MAIP
-- [ ] Creator wants to explain MAIP's full role beyond "connective tissue" — need that conversation
+- [x] ~~Creator wants to explain MAIP's full role beyond "connective tissue"~~ **ANSWERED (Session 3)**: MAIP is both the gift and the trap. It opened the door AND made him the token success story. The industry weaponizes diversity pipelines as proof of progress. This tension is CENTRAL to the series.
 
 ### Story Specifics
-- [ ] The "never promoted at GSP" story — what happened?
-- [ ] The W+K layoff story — how did it go down?
-- [ ] The vaccination incident at GSP — full story
+- [x] ~~The "never promoted at GSP" story~~ **ANSWERED (Session 3)**: Systemic goalpost-moving. "You could do a little better" on repeat. Thought it was personal, realized it was structural. Not just him — other strategists experienced the same.
+- [x] ~~The W+K layoff story~~ **ANSWERED (Session 3)**: Relief then rage. Was already done — journaling about wanting change 2 days before. Spell broke via (1) seeing Kool-Aid drinkers (2) not basing identity on a workplace (3) being Black in Portland (4) W+K social silos.
+- [ ] The vaccination incident at GSP — full story (still needed)
 - [ ] What specific moments/memories seed the pilot episode?
+- [ ] The W+K journal entry from 2 days before layoff (artifact to capture)
 
 ### Tone & Style
 - [ ] Visual style references — what does the show look like? (Cinematography, color palette)
