@@ -264,8 +264,8 @@
 </head>
 <body>
 
-  <!-- Mobile toggle -->
-  <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">&#9776;</button>
+  <!-- Sidebar toggle -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
 
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
@@ -306,7 +306,7 @@
         <span class="meta-pill"><span class="dot"></span> Half-Hour Hybrid</span>
         <span class="meta-pill"><span class="dot"></span> 4&ndash;5+ Seasons</span>
         <span class="meta-pill"><span class="dot"></span> Drama-forward &middot; Dark Humor</span>
-        <span class="meta-pill"><span class="dot"></span> Creator: J. Germs</span>
+        <span class="meta-pill"><span class="dot"></span> Creator: Joshua German</span>
       </div>
     </header>
 
@@ -549,43 +549,6 @@
 
   </main><!-- /.main-content -->
 
-  <script>
-    // Mobile sidebar toggle
-    const toggle = document.getElementById('mobileToggle');
-    const sidebar = document.getElementById('sidebar');
-
-    toggle.addEventListener('click', function () {
-      sidebar.classList.toggle('open');
-      const isOpen = sidebar.classList.contains('open');
-      toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
-      toggle.innerHTML = isOpen ? '&times;' : '&#9776;';
-    });
-
-    // Close sidebar when nav link tapped on mobile
-    sidebar.querySelectorAll('.nav-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (window.innerWidth <= 768) {
-          sidebar.classList.remove('open');
-          toggle.setAttribute('aria-label', 'Open navigation');
-          toggle.innerHTML = '&#9776;';
-        }
-      });
-    });
-
-    // Close sidebar on outside click (mobile)
-    document.addEventListener('click', function (e) {
-      if (
-        window.innerWidth <= 768 &&
-        sidebar.classList.contains('open') &&
-        !sidebar.contains(e.target) &&
-        e.target !== toggle
-      ) {
-        sidebar.classList.remove('open');
-        toggle.setAttribute('aria-label', 'Open navigation');
-        toggle.innerHTML = '&#9776;';
-      }
-    });
-  </script>
-
+<script src="script.js"></script>
 </body>
 </html>

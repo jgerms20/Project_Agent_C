@@ -114,7 +114,7 @@
 <body>
 
   <!-- Mobile toggle -->
-  <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+  <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
 
   <!-- Sidebar -->
   <aside class="sidebar">
@@ -486,30 +486,6 @@
 
   </main><!-- /.main-content -->
 
-  <script>
-    // Mobile sidebar toggle — close on outside click
-    document.addEventListener('click', function (e) {
-      var sidebar = document.querySelector('.sidebar');
-      var toggle = document.querySelector('.mobile-toggle');
-      if (
-        window.innerWidth <= 768 &&
-        sidebar.classList.contains('open') &&
-        !sidebar.contains(e.target) &&
-        e.target !== toggle
-      ) {
-        sidebar.classList.remove('open');
-      }
-    });
-
-    // Close sidebar when a nav link is tapped on mobile
-    document.querySelectorAll('.nav-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (window.innerWidth <= 768) {
-          document.querySelector('.sidebar').classList.remove('open');
-        }
-      });
-    });
-  </script>
-
+<script src="script.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
         <aside class="sidebar">
             <div class="sidebar-header">
                 <h1>THE AGENCY</h1>
@@ -32,7 +32,7 @@
             </nav>
         </aside>
 
-        <main class="content">
+        <main class="main-content">
             <header class="page-header">
                 <h1>References</h1>
                 <p class="page-description">Comparable shows, playlist, and cultural references that shape the show's DNA</p>
@@ -300,7 +300,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td><em>Run It Up</em></td>
+                                    <td><a href="https://open.spotify.com/search/Run%20It%20Up%20Tyler%20The%20Creator" target="_blank" class="spotify-link"><em>Run It Up</em></a></td>
                                     <td>Tyler, The Creator</td>
                                     <td>Call Me If You Get Lost</td>
                                     <td>2021</td>
@@ -308,7 +308,7 @@
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td><em>New Slaves</em></td>
+                                    <td><a href="https://open.spotify.com/search/New%20Slaves%20Kanye%20West" target="_blank" class="spotify-link"><em>New Slaves</em></a></td>
                                     <td>Kanye West</td>
                                     <td>Yeezus</td>
                                     <td>2013</td>
@@ -316,7 +316,7 @@
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td><em>Story of OJ</em></td>
+                                    <td><a href="https://open.spotify.com/search/Story%20of%20OJ%20Jay-Z" target="_blank" class="spotify-link"><em>Story of OJ</em></a></td>
                                     <td>Jay-Z</td>
                                     <td>4:44</td>
                                     <td>2017</td>
@@ -324,7 +324,7 @@
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td><em>Legacy</em></td>
+                                    <td><a href="https://open.spotify.com/search/Legacy%20Jay-Z%204%3A44" target="_blank" class="spotify-link"><em>Legacy</em></a></td>
                                     <td>Jay-Z</td>
                                     <td>4:44</td>
                                     <td>2017</td>
@@ -332,7 +332,7 @@
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td><em>Organic Dreams</em></td>
+                                    <td><a href="https://open.spotify.com/search/Organic%20Dreams%20Larry%20June" target="_blank" class="spotify-link"><em>Organic Dreams</em></a></td>
                                     <td>Larry June</td>
                                     <td>The Great Escape</td>
                                     <td>2023</td>
@@ -340,7 +340,7 @@
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td><em>Count Up That Loot</em></td>
+                                    <td><a href="https://open.spotify.com/search/Count%20Up%20That%20Loot%20Nipsey%20Hussle" target="_blank" class="spotify-link"><em>Count Up That Loot</em></a></td>
                                     <td>Nipsey Hussle</td>
                                     <td>Victory Lap</td>
                                     <td>2018</td>
@@ -348,7 +348,7 @@
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td><em>Break My Soul</em></td>
+                                    <td><a href="https://open.spotify.com/search/Break%20My%20Soul%20Beyonce" target="_blank" class="spotify-link"><em>Break My Soul</em></a></td>
                                     <td>Beyoncé</td>
                                     <td>Renaissance</td>
                                     <td>2022</td>
@@ -356,7 +356,7 @@
                                 </tr>
                                 <tr>
                                     <td>8</td>
-                                    <td><em>Man at the Garden</em></td>
+                                    <td><a href="https://open.spotify.com/search/Man%20at%20the%20Garden%20Kendrick%20Lamar" target="_blank" class="spotify-link"><em>Man at the Garden</em></a></td>
                                     <td>Kendrick Lamar</td>
                                     <td>GNX</td>
                                     <td>2024</td>
@@ -740,6 +740,23 @@
                 font-size: 1.25rem;
             }
         }
+        /* Spotify Links */
+        .spotify-link {
+            color: var(--accent-gold, #c9a84c);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .spotify-link:hover {
+            color: #1DB954;
+            text-decoration: underline;
+        }
+
+        .spotify-link:hover::after {
+            content: ' \25B6';
+            font-size: 0.75em;
+        }
     </style>
+<script src="script.js"></script>
 </body>
 </html>
